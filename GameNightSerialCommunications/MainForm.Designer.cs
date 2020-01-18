@@ -58,13 +58,13 @@
             // 
             // txtDataReceived
             // 
-            this.txtDataReceived.Location = new System.Drawing.Point(12, 62);
+            this.txtDataReceived.Location = new System.Drawing.Point(12, 279);
             this.txtDataReceived.Multiline = true;
             this.txtDataReceived.Name = "txtDataReceived";
-            this.txtDataReceived.Size = new System.Drawing.Size(439, 364);
+            this.txtDataReceived.Size = new System.Drawing.Size(439, 147);
             this.txtDataReceived.TabIndex = 2;
             // 
-            // Form1
+            // MainForm
             // 
             this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
