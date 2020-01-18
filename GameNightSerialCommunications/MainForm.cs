@@ -12,12 +12,20 @@ namespace GameNightSerialCommunications
             InitializeComponent();
             var ports = SerialPort.GetPortNames();
             cboTeam1.DataSource = ports;
-            cboTeam2.DataSource = ports;
+            var ports2 = SerialPort.GetPortNames();
+            cboTeam2.DataSource = ports2;
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            serialTeam1.WriteLine(txtCommand.Text);
+            if (serialTeam1.IsOpen)
+            {
+                serialTeam1.WriteLine(txtCommand.Text);
+            }
+            if (serialTeam2.IsOpen)
+            {
+                serialTeam2.WriteLine(txtCommand.Text);
+            }
             txtCommand.Text = "";
         }
 
@@ -36,7 +44,7 @@ namespace GameNightSerialCommunications
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string line = serialTeam1.ReadLine();
-            setDataReceived("TEAM1-"+line);
+            setDataReceived("TEAM1-" + line);
         }
 
         private void setDataReceived(string dataReceived)
@@ -81,17 +89,17 @@ namespace GameNightSerialCommunications
             Thread.Sleep(100);
             serialTeam1.WriteLine("S:100");
             serialTeam1.WriteLine("L:1");
-            Thread.Sleep(100); 
+            Thread.Sleep(100);
             serialTeam1.WriteLine("L:2");
-            Thread.Sleep(100); 
+            Thread.Sleep(100);
             serialTeam1.WriteLine("L:4");
-            Thread.Sleep(100); 
+            Thread.Sleep(100);
             serialTeam1.WriteLine("L:8");
-            Thread.Sleep(100); 
+            Thread.Sleep(100);
             serialTeam1.WriteLine("L:16");
-            Thread.Sleep(100); 
+            Thread.Sleep(100);
             serialTeam1.WriteLine("L:32");
-            Thread.Sleep(100); 
+            Thread.Sleep(100);
             serialTeam1.WriteLine("L:64");
             Thread.Sleep(100);
             serialTeam1.WriteLine("L:128");
@@ -104,6 +112,12 @@ namespace GameNightSerialCommunications
         {
             if (!serialTeam1.IsOpen)
             {
+                serialTeam1.PortName = cboTeam1.Text;
+            if (serialTeam1.PortName == serialTeam2.PortName)
+            {
+                MessageBox.Show("Kies een andere port, deze is al in gebruik");
+                return;
+            }
                 serialTeam1.Open();
             }
         }
@@ -112,6 +126,12 @@ namespace GameNightSerialCommunications
         {
             if (!serialTeam2.IsOpen)
             {
+                serialTeam2.PortName = cboTeam2.Text;
+                if (serialTeam1.PortName == serialTeam2.PortName)
+                {
+                    MessageBox.Show("Kies een andere port, deze is al in gebruik");
+                    return;
+                }
                 serialTeam2.Open();
             }
         }
@@ -119,7 +139,7 @@ namespace GameNightSerialCommunications
         private void serialTeam2_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             string line = serialTeam1.ReadLine();
-            setDataReceived("TEAM2-"+line);
+            setDataReceived("TEAM2-" + line);
         }
     }
 }
