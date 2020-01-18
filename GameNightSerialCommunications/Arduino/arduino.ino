@@ -60,12 +60,6 @@ void processSerial(String commandText) {
   }
 }
 
-void keyPadPressed(String keyCode) {
-  String action = "PAD";
-  consoleLog(action, keyCode);
-  toDisplay(keyCode);
-}
-
 void toDisplay(String command) {
   String resizedString = fillString(command, 8, " ");
   char charField[8];
