@@ -1,54 +1,26 @@
 #include <TM1638plus.h>
 
 // GPIO I/O pins on the Arduino connected to strobe, clock, data,
-//pick on any I/O you want.
 #define  STROBE_TM 10
 #define  CLOCK_TM 9
 #define  DIO_TM 8
 
 int buzzerPin = 12;
-#define key1 2 //connect wire 1 to pin 2
-#define key2 3 //connect wire 2 to pin 3
-#define key3 5 //connect wire 3 to pin 4
-#define key4 4 //connect wire 4 to pin 5
 String prevCommand = "";
 
 //Constructor object
 TM1638plus tm(STROBE_TM, CLOCK_TM , DIO_TM);
 
-
 void setup() {
   Serial.begin(9600);
   Serial.setTimeout(50);
-  pinMode(key1, INPUT_PULLUP);// set pin as input
-  pinMode(key2, INPUT_PULLUP);// set pin as input
-  pinMode(key3, INPUT_PULLUP);// set pin as input
-  pinMode(key4, INPUT_PULLUP);// set pin as input
   pinMode (buzzerPin, OUTPUT);
   digitalWrite (buzzerPin, HIGH);
 }
 
-
 void loop() {
   uint8_t buttons = tm.readButtons();
   processButtonPress(buttons);
-  int key1S = digitalRead(key1);
-  int key2S = digitalRead(key2);
-  int key3S = digitalRead(key3);
-  int key4S = digitalRead(key4);
-  if (!key1S) {
-    keyPadPressed("1");
-  }
-  if (!key2S) {
-    keyPadPressed("2");
-  }
-  if (!key3S) {
-    keyPadPressed("3");
-  }
-  if (!key4S) {
-    keyPadPressed("4");
-  }
-
   if (Serial.available()) {
     String command = Serial.readStringUntil('\n');
       prevCommand = command;
@@ -73,11 +45,7 @@ void processSerial(String commandText) {
         toDisplay(commandText);
       }
       if (command == 'S') {
-        //        toDisplay("ERROR -S");
-        //        delay(2500);
-        //        toDisplay("INVALID");
-        //        delay(2500);
-        //        toDisplay("");
+        // S is for sound, number is ms sound is on (during sound, program is stalled for other input)
         int buzzTime = commandText.toInt();
         digitalWrite (buzzerPin, LOW);
         delay (buzzTime);
@@ -141,6 +109,8 @@ void processLedCommand(int led) {
   // 64 = led 7
   // 128 = led 8
   // so 129 = led 1 + 8
+
+  // Not a beautifull function, but it works :)
 
   if (led > 256) {
     return;
