@@ -29,29 +29,43 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnSend = new System.Windows.Forms.Button();
+            this.btnSendAll = new System.Windows.Forms.Button();
             this.txtCommand = new System.Windows.Forms.TextBox();
             this.serialTeam1 = new System.IO.Ports.SerialPort(this.components);
-            this.txtDataReceived = new System.Windows.Forms.TextBox();
-            this.btnFault = new System.Windows.Forms.Button();
-            this.btnGood = new System.Windows.Forms.Button();
+            this.btnFault1 = new System.Windows.Forms.Button();
+            this.btnGood1 = new System.Windows.Forms.Button();
             this.cboTeam1 = new System.Windows.Forms.ComboBox();
             this.cboTeam2 = new System.Windows.Forms.ComboBox();
             this.serialTeam2 = new System.IO.Ports.SerialPort(this.components);
             this.btnSerial1Open = new System.Windows.Forms.Button();
             this.btnSerial2Open = new System.Windows.Forms.Button();
-            this.cboComsTo = new System.Windows.Forms.ComboBox();
+            this.txtLastAnswerTeam1 = new System.Windows.Forms.TextBox();
+            this.lblLastAnswerTeam1 = new System.Windows.Forms.Label();
+            this.pnlTeam1 = new System.Windows.Forms.Panel();
+            this.lblComPort1 = new System.Windows.Forms.Label();
+            this.pnlTeam2 = new System.Windows.Forms.Panel();
+            this.lblComPort2 = new System.Windows.Forms.Label();
+            this.txtLastAnswerTeam2 = new System.Windows.Forms.TextBox();
+            this.lblLastAnswerTeam2 = new System.Windows.Forms.Label();
+            this.btnSend2 = new System.Windows.Forms.Button();
+            this.btnSend1 = new System.Windows.Forms.Button();
+            this.btnGood2 = new System.Windows.Forms.Button();
+            this.btnFault2 = new System.Windows.Forms.Button();
+            this.btnGoodAll = new System.Windows.Forms.Button();
+            this.btnFaultAll = new System.Windows.Forms.Button();
+            this.pnlTeam1.SuspendLayout();
+            this.pnlTeam2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnSend
+            // btnSendAll
             // 
-            this.btnSend.Location = new System.Drawing.Point(464, 13);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 1;
-            this.btnSend.Text = "Verstuur";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            this.btnSendAll.Location = new System.Drawing.Point(376, 12);
+            this.btnSendAll.Name = "btnSendAll";
+            this.btnSendAll.Size = new System.Drawing.Size(112, 23);
+            this.btnSendAll.TabIndex = 1;
+            this.btnSendAll.Text = "Naar alle teams";
+            this.btnSendAll.UseVisualStyleBackColor = true;
+            this.btnSendAll.Click += new System.EventHandler(this.btnSendAll_Click);
             // 
             // txtCommand
             // 
@@ -64,39 +78,30 @@
             // 
             this.serialTeam1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
-            // txtDataReceived
+            // btnFault1
             // 
-            this.txtDataReceived.Location = new System.Drawing.Point(12, 279);
-            this.txtDataReceived.Multiline = true;
-            this.txtDataReceived.Name = "txtDataReceived";
-            this.txtDataReceived.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDataReceived.Size = new System.Drawing.Size(439, 147);
-            this.txtDataReceived.TabIndex = 2;
+            this.btnFault1.Location = new System.Drawing.Point(494, 41);
+            this.btnFault1.Name = "btnFault1";
+            this.btnFault1.Size = new System.Drawing.Size(112, 23);
+            this.btnFault1.TabIndex = 3;
+            this.btnFault1.Text = "Fout signaal";
+            this.btnFault1.UseVisualStyleBackColor = true;
+            this.btnFault1.Click += new System.EventHandler(this.btnFault1_Click);
             // 
-            // btnFault
+            // btnGood1
             // 
-            this.btnFault.Location = new System.Drawing.Point(12, 40);
-            this.btnFault.Name = "btnFault";
-            this.btnFault.Size = new System.Drawing.Size(79, 23);
-            this.btnFault.TabIndex = 3;
-            this.btnFault.Text = "Fout signaal";
-            this.btnFault.UseVisualStyleBackColor = true;
-            this.btnFault.Click += new System.EventHandler(this.btnFault_Click);
-            // 
-            // btnGood
-            // 
-            this.btnGood.Location = new System.Drawing.Point(97, 40);
-            this.btnGood.Name = "btnGood";
-            this.btnGood.Size = new System.Drawing.Size(87, 23);
-            this.btnGood.TabIndex = 4;
-            this.btnGood.Text = "Goed signaal";
-            this.btnGood.UseVisualStyleBackColor = true;
-            this.btnGood.Click += new System.EventHandler(this.btnGood_Click);
+            this.btnGood1.Location = new System.Drawing.Point(494, 70);
+            this.btnGood1.Name = "btnGood1";
+            this.btnGood1.Size = new System.Drawing.Size(111, 23);
+            this.btnGood1.TabIndex = 4;
+            this.btnGood1.Text = "Goed signaal";
+            this.btnGood1.UseVisualStyleBackColor = true;
+            this.btnGood1.Click += new System.EventHandler(this.btnGood1_Click);
             // 
             // cboTeam1
             // 
             this.cboTeam1.FormattingEnabled = true;
-            this.cboTeam1.Location = new System.Drawing.Point(613, 12);
+            this.cboTeam1.Location = new System.Drawing.Point(85, 236);
             this.cboTeam1.Name = "cboTeam1";
             this.cboTeam1.Size = new System.Drawing.Size(121, 21);
             this.cboTeam1.TabIndex = 5;
@@ -104,7 +109,7 @@
             // cboTeam2
             // 
             this.cboTeam2.FormattingEnabled = true;
-            this.cboTeam2.Location = new System.Drawing.Point(613, 42);
+            this.cboTeam2.Location = new System.Drawing.Point(96, 236);
             this.cboTeam2.Name = "cboTeam2";
             this.cboTeam2.Size = new System.Drawing.Size(121, 21);
             this.cboTeam2.TabIndex = 6;
@@ -115,7 +120,7 @@
             // 
             // btnSerial1Open
             // 
-            this.btnSerial1Open.Location = new System.Drawing.Point(740, 10);
+            this.btnSerial1Open.Location = new System.Drawing.Point(212, 234);
             this.btnSerial1Open.Name = "btnSerial1Open";
             this.btnSerial1Open.Size = new System.Drawing.Size(48, 23);
             this.btnSerial1Open.TabIndex = 7;
@@ -125,7 +130,7 @@
             // 
             // btnSerial2Open
             // 
-            this.btnSerial2Open.Location = new System.Drawing.Point(740, 41);
+            this.btnSerial2Open.Location = new System.Drawing.Point(223, 234);
             this.btnSerial2Open.Name = "btnSerial2Open";
             this.btnSerial2Open.Size = new System.Drawing.Size(48, 23);
             this.btnSerial2Open.TabIndex = 8;
@@ -133,38 +138,163 @@
             this.btnSerial2Open.UseVisualStyleBackColor = true;
             this.btnSerial2Open.Click += new System.EventHandler(this.btnSerial2Open_Click);
             // 
-            // cboComsTo
+            // txtLastAnswerTeam1
             // 
-            this.cboComsTo.FormattingEnabled = true;
-            this.cboComsTo.Items.AddRange(new object[] {
-            "Beide teams",
-            "Team 1",
-            "Team 2"});
-            this.cboComsTo.Location = new System.Drawing.Point(376, 13);
-            this.cboComsTo.Name = "cboComsTo";
-            this.cboComsTo.Size = new System.Drawing.Size(82, 21);
-            this.cboComsTo.TabIndex = 9;
-            this.cboComsTo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.txtLastAnswerTeam1.Location = new System.Drawing.Point(16, 25);
+            this.txtLastAnswerTeam1.Name = "txtLastAnswerTeam1";
+            this.txtLastAnswerTeam1.Size = new System.Drawing.Size(285, 20);
+            this.txtLastAnswerTeam1.TabIndex = 10;
+            // 
+            // lblLastAnswerTeam1
+            // 
+            this.lblLastAnswerTeam1.AutoSize = true;
+            this.lblLastAnswerTeam1.Location = new System.Drawing.Point(13, 9);
+            this.lblLastAnswerTeam1.Name = "lblLastAnswerTeam1";
+            this.lblLastAnswerTeam1.Size = new System.Drawing.Size(124, 13);
+            this.lblLastAnswerTeam1.TabIndex = 12;
+            this.lblLastAnswerTeam1.Text = "Laatste antwoord team 1";
+            // 
+            // pnlTeam1
+            // 
+            this.pnlTeam1.Controls.Add(this.lblComPort1);
+            this.pnlTeam1.Controls.Add(this.txtLastAnswerTeam1);
+            this.pnlTeam1.Controls.Add(this.lblLastAnswerTeam1);
+            this.pnlTeam1.Controls.Add(this.cboTeam1);
+            this.pnlTeam1.Controls.Add(this.btnSerial1Open);
+            this.pnlTeam1.Location = new System.Drawing.Point(12, 170);
+            this.pnlTeam1.Name = "pnlTeam1";
+            this.pnlTeam1.Size = new System.Drawing.Size(343, 268);
+            this.pnlTeam1.TabIndex = 13;
+            // 
+            // lblComPort1
+            // 
+            this.lblComPort1.AutoSize = true;
+            this.lblComPort1.Location = new System.Drawing.Point(3, 239);
+            this.lblComPort1.Name = "lblComPort1";
+            this.lblComPort1.Size = new System.Drawing.Size(78, 13);
+            this.lblComPort1.TabIndex = 14;
+            this.lblComPort1.Text = "Verbind team 1";
+            // 
+            // pnlTeam2
+            // 
+            this.pnlTeam2.Controls.Add(this.lblComPort2);
+            this.pnlTeam2.Controls.Add(this.txtLastAnswerTeam2);
+            this.pnlTeam2.Controls.Add(this.lblLastAnswerTeam2);
+            this.pnlTeam2.Controls.Add(this.cboTeam2);
+            this.pnlTeam2.Controls.Add(this.btnSerial2Open);
+            this.pnlTeam2.Location = new System.Drawing.Point(361, 170);
+            this.pnlTeam2.Name = "pnlTeam2";
+            this.pnlTeam2.Size = new System.Drawing.Size(343, 268);
+            this.pnlTeam2.TabIndex = 14;
+            // 
+            // lblComPort2
+            // 
+            this.lblComPort2.AutoSize = true;
+            this.lblComPort2.Location = new System.Drawing.Point(12, 239);
+            this.lblComPort2.Name = "lblComPort2";
+            this.lblComPort2.Size = new System.Drawing.Size(78, 13);
+            this.lblComPort2.TabIndex = 13;
+            this.lblComPort2.Text = "Verbind team 2";
+            // 
+            // txtLastAnswerTeam2
+            // 
+            this.txtLastAnswerTeam2.Location = new System.Drawing.Point(16, 25);
+            this.txtLastAnswerTeam2.Name = "txtLastAnswerTeam2";
+            this.txtLastAnswerTeam2.Size = new System.Drawing.Size(285, 20);
+            this.txtLastAnswerTeam2.TabIndex = 10;
+            // 
+            // lblLastAnswerTeam2
+            // 
+            this.lblLastAnswerTeam2.AutoSize = true;
+            this.lblLastAnswerTeam2.Location = new System.Drawing.Point(13, 9);
+            this.lblLastAnswerTeam2.Name = "lblLastAnswerTeam2";
+            this.lblLastAnswerTeam2.Size = new System.Drawing.Size(124, 13);
+            this.lblLastAnswerTeam2.TabIndex = 12;
+            this.lblLastAnswerTeam2.Text = "Laatste antwoord team 2";
+            // 
+            // btnSend2
+            // 
+            this.btnSend2.Location = new System.Drawing.Point(612, 12);
+            this.btnSend2.Name = "btnSend2";
+            this.btnSend2.Size = new System.Drawing.Size(112, 23);
+            this.btnSend2.TabIndex = 15;
+            this.btnSend2.Text = "Naar team 2";
+            this.btnSend2.UseVisualStyleBackColor = true;
+            // 
+            // btnSend1
+            // 
+            this.btnSend1.Location = new System.Drawing.Point(494, 12);
+            this.btnSend1.Name = "btnSend1";
+            this.btnSend1.Size = new System.Drawing.Size(112, 23);
+            this.btnSend1.TabIndex = 16;
+            this.btnSend1.Text = "Naar team 1";
+            this.btnSend1.UseVisualStyleBackColor = true;
+            // 
+            // btnGood2
+            // 
+            this.btnGood2.Location = new System.Drawing.Point(612, 70);
+            this.btnGood2.Name = "btnGood2";
+            this.btnGood2.Size = new System.Drawing.Size(112, 23);
+            this.btnGood2.TabIndex = 16;
+            this.btnGood2.Text = "Goed signaal";
+            this.btnGood2.UseVisualStyleBackColor = true;
+            this.btnGood2.Click += new System.EventHandler(this.btnGood2_Click);
+            // 
+            // btnFault2
+            // 
+            this.btnFault2.Location = new System.Drawing.Point(612, 41);
+            this.btnFault2.Name = "btnFault2";
+            this.btnFault2.Size = new System.Drawing.Size(112, 23);
+            this.btnFault2.TabIndex = 15;
+            this.btnFault2.Text = "Fout signaal";
+            this.btnFault2.UseVisualStyleBackColor = true;
+            this.btnFault2.Click += new System.EventHandler(this.btnFault2_Click);
+            // 
+            // btnGoodAll
+            // 
+            this.btnGoodAll.Location = new System.Drawing.Point(376, 70);
+            this.btnGoodAll.Name = "btnGoodAll";
+            this.btnGoodAll.Size = new System.Drawing.Size(111, 23);
+            this.btnGoodAll.TabIndex = 18;
+            this.btnGoodAll.Text = "Goed signaal";
+            this.btnGoodAll.UseVisualStyleBackColor = true;
+            this.btnGoodAll.Click += new System.EventHandler(this.btnGoodAll_Click);
+            // 
+            // btnFaultAll
+            // 
+            this.btnFaultAll.Location = new System.Drawing.Point(376, 41);
+            this.btnFaultAll.Name = "btnFaultAll";
+            this.btnFaultAll.Size = new System.Drawing.Size(112, 23);
+            this.btnFaultAll.TabIndex = 17;
+            this.btnFaultAll.Text = "Fout signaal";
+            this.btnFaultAll.UseVisualStyleBackColor = true;
+            this.btnFaultAll.Click += new System.EventHandler(this.btnFaultAll_Click);
             // 
             // MainForm
             // 
-            this.AcceptButton = this.btnSend;
+            this.AcceptButton = this.btnSendAll;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cboComsTo);
-            this.Controls.Add(this.btnSerial2Open);
-            this.Controls.Add(this.btnSerial1Open);
-            this.Controls.Add(this.cboTeam2);
-            this.Controls.Add(this.cboTeam1);
-            this.Controls.Add(this.btnGood);
-            this.Controls.Add(this.btnFault);
-            this.Controls.Add(this.txtDataReceived);
+            this.Controls.Add(this.btnGoodAll);
+            this.Controls.Add(this.btnFaultAll);
+            this.Controls.Add(this.btnGood2);
+            this.Controls.Add(this.btnSend1);
+            this.Controls.Add(this.btnSend2);
+            this.Controls.Add(this.btnFault2);
+            this.Controls.Add(this.pnlTeam2);
+            this.Controls.Add(this.pnlTeam1);
+            this.Controls.Add(this.btnGood1);
             this.Controls.Add(this.txtCommand);
-            this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.btnSendAll);
+            this.Controls.Add(this.btnFault1);
             this.Name = "MainForm";
             this.Text = "Family Game Night Communicator";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
+            this.pnlTeam1.ResumeLayout(false);
+            this.pnlTeam1.PerformLayout();
+            this.pnlTeam2.ResumeLayout(false);
+            this.pnlTeam2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,18 +302,30 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Button btnSendAll;
         private System.Windows.Forms.TextBox txtCommand;
         private System.IO.Ports.SerialPort serialTeam1;
-        private System.Windows.Forms.TextBox txtDataReceived;
-        private System.Windows.Forms.Button btnFault;
-        private System.Windows.Forms.Button btnGood;
+        private System.Windows.Forms.Button btnFault1;
+        private System.Windows.Forms.Button btnGood1;
         private System.Windows.Forms.ComboBox cboTeam1;
         private System.Windows.Forms.ComboBox cboTeam2;
         private System.IO.Ports.SerialPort serialTeam2;
         private System.Windows.Forms.Button btnSerial1Open;
         private System.Windows.Forms.Button btnSerial2Open;
-        private System.Windows.Forms.ComboBox cboComsTo;
+        private System.Windows.Forms.TextBox txtLastAnswerTeam1;
+        private System.Windows.Forms.Label lblLastAnswerTeam1;
+        private System.Windows.Forms.Panel pnlTeam1;
+        private System.Windows.Forms.Label lblComPort1;
+        private System.Windows.Forms.Panel pnlTeam2;
+        private System.Windows.Forms.Label lblComPort2;
+        private System.Windows.Forms.TextBox txtLastAnswerTeam2;
+        private System.Windows.Forms.Label lblLastAnswerTeam2;
+        private System.Windows.Forms.Button btnSend2;
+        private System.Windows.Forms.Button btnSend1;
+        private System.Windows.Forms.Button btnGood2;
+        private System.Windows.Forms.Button btnFault2;
+        private System.Windows.Forms.Button btnGoodAll;
+        private System.Windows.Forms.Button btnFaultAll;
     }
 }
 

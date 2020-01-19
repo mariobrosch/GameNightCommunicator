@@ -1,112 +1,67 @@
 ﻿using System;
 using System.IO.Ports;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GameNightSerialCommunications
 {
     public partial class MainForm : Form
     {
+        SerialHandler sc = new SerialHandler();
+
         public MainForm()
         {
             InitializeComponent();
+
             var ports = SerialPort.GetPortNames();
             cboTeam1.DataSource = ports;
             var ports2 = SerialPort.GetPortNames();
             cboTeam2.DataSource = ports2;
-            cboComsTo.SelectedIndex = 0;
         }
 
-        private void btnSend_Click(object sender, EventArgs e)
+        private void btnSendAll_Click(object sender, EventArgs e)
         {
-            if (serialTeam1.IsOpen && (cboComsTo.SelectedIndex == 0 || cboComsTo.SelectedIndex == 1))
-            {
-                serialTeam1.WriteLine(txtCommand.Text);
-            }
-            if (serialTeam2.IsOpen && (cboComsTo.SelectedIndex == 0 || cboComsTo.SelectedIndex == 2))
-            {
-                serialTeam2.WriteLine(txtCommand.Text);
-            }
+            sc.SendToAll(txtCommand.Text);
             txtCommand.Text = "";
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
-            if (serialTeam1.IsOpen)
-            {
-                serialTeam1.Close();
-            }
-            if (serialTeam2.IsOpen)
-            {
-                serialTeam2.Close();
-            }
+            sc.CloseAllPorts();
         }
 
-        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            string line = serialTeam1.ReadLine();
-            setDataReceived("TEAM1-" + line);
+            setDataReceived("TEAM1-" + serialTeam1.ReadLine());
         }
 
         private void setDataReceived(string dataReceived)
         {
             if (InvokeRequired)
             {
-                this.Invoke(new Action<string>(setDataReceived), new object[] { dataReceived });
+                Invoke(new Action<string>(setDataReceived), new object[] { dataReceived });
                 return;
             }
-            txtDataReceived.AppendText(dataReceived + Environment.NewLine);
+            var team = dataReceived.Split('-');
+            if (team[0] == "TEAM1")
+            {
+                txtLastAnswerTeam1.Text = team[1];
+            }
+            if (team[0] == "TEAM2")
+            {
+                txtLastAnswerTeam2.Text = team[1];
+            }
         }
 
-        private void btnFault_Click(object sender, EventArgs e)
+        private void btnFault1_Click(object sender, EventArgs e)
         {
-            serialTeam1.WriteLine("FOUT");
-            serialTeam1.WriteLine("L:255");
-            serialTeam1.WriteLine("S:300");
-            Thread.Sleep(300);
-            serialTeam1.WriteLine("L:0");
-            Thread.Sleep(300);
-            serialTeam1.WriteLine("L:255");
-            serialTeam1.WriteLine("S:300");
-            Thread.Sleep(300);
-            serialTeam1.WriteLine("L:0");
-            Thread.Sleep(300);
-            serialTeam1.WriteLine("L:255");
-            serialTeam1.WriteLine("S:300");
-            Thread.Sleep(300);
-            serialTeam1.WriteLine("L:0");
-            Thread.Sleep(300);
-            serialTeam1.WriteLine("");
+            Task.Run(() => sc.SendFault(serialTeam1));
         }
 
-        private void btnGood_Click(object sender, EventArgs e)
+        private void btnGood1_Click(object sender, EventArgs e)
         {
-            serialTeam1.WriteLine("GOED");
-            serialTeam1.WriteLine("S:100");
-            Thread.Sleep(200);
-            serialTeam1.WriteLine("S:50");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("S:50");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("S:100");
-            serialTeam1.WriteLine("L:1");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("L:2");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("L:4");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("L:8");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("L:16");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("L:32");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("L:64");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("L:128");
-            Thread.Sleep(100);
-            serialTeam1.WriteLine("L:0");
-            serialTeam1.WriteLine("");
+            Task.Run(() => sc.SendGood(serialTeam1));
         }
 
         private void btnSerial1Open_Click(object sender, EventArgs e)
@@ -114,12 +69,18 @@ namespace GameNightSerialCommunications
             if (!serialTeam1.IsOpen)
             {
                 serialTeam1.PortName = cboTeam1.Text;
-            if (serialTeam1.PortName == serialTeam2.PortName)
-            {
-                MessageBox.Show("Kies een andere port, deze is al in gebruik");
-                return;
+                if (serialTeam1.PortName == serialTeam2.PortName)
+                {
+                    MessageBox.Show("Kies een andere port, deze is al in gebruik");
+                    return;
+                }
+                sc.OpenPort(serialTeam1);
+                btnSerial1Open.Text = "Close";
             }
-                serialTeam1.Open();
+            else
+            {
+                sc.ClosePort(serialTeam1);
+                btnSerial1Open.Text = "Open";
             }
         }
 
@@ -133,19 +94,42 @@ namespace GameNightSerialCommunications
                     MessageBox.Show("Kies een andere port, deze is al in gebruik");
                     return;
                 }
-                serialTeam2.Open();
+                sc.OpenPort(serialTeam2);
+                btnSerial2Open.Text = "Close";
+            }
+            else
+            {
+                sc.ClosePort(serialTeam2);
+                btnSerial2Open.Text = "Open";
             }
         }
 
-        private void serialTeam2_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        private void serialTeam2_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             string line = serialTeam2.ReadLine();
             setDataReceived("TEAM2-" + line);
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnFaultAll_Click(object sender, EventArgs e)
         {
-            
+            Task.Run(() => sc.SendFault(serialTeam1));
+            Task.Run(() => sc.SendFault(serialTeam2));
+        }
+
+        private void btnGoodAll_Click(object sender, EventArgs e)
+        {
+            Task.Run(() => sc.SendGood(serialTeam1));
+            Task.Run(() => sc.SendGood(serialTeam2));
+        }
+
+        private void btnFault2_Click(object sender, EventArgs e)
+        {
+            Task.Run(() => sc.SendFault(serialTeam2));
+        }
+
+        private void btnGood2_Click(object sender, EventArgs e)
+        {
+            Task.Run(() => sc.SendGood(serialTeam2));
         }
     }
 }
