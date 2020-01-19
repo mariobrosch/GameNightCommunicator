@@ -4,5 +4,7 @@ An app to communicate via COM port (bluetooth for example) to send and receive d
 
 
 ## TODO
-* Set timer mode, so the gamehost can see which player was first
-* Add some led shows
+* Save and load previous game party (to continue a game from another day)
+* Autosave functionality
+* Total answer time calculation
+* Refactor the code

@@ -60,8 +60,20 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnStartTimer = new System.Windows.Forms.Button();
             this.btnSendScores = new System.Windows.Forms.Button();
+            this.btnAdd11 = new System.Windows.Forms.Button();
+            this.btnAdd15 = new System.Windows.Forms.Button();
+            this.numScore1 = new System.Windows.Forms.NumericUpDown();
+            this.btnAdd25 = new System.Windows.Forms.Button();
+            this.numScore2 = new System.Windows.Forms.NumericUpDown();
+            this.btnAdd21 = new System.Windows.Forms.Button();
+            this.lblScore1 = new System.Windows.Forms.Label();
+            this.lblScore2 = new System.Windows.Forms.Label();
+            this.chkFastest1 = new System.Windows.Forms.CheckBox();
+            this.chkFastest2 = new System.Windows.Forms.CheckBox();
             this.pnlTeam1.SuspendLayout();
             this.pnlTeam2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScore2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSendAll
@@ -108,7 +120,7 @@
             // cboTeam1
             // 
             this.cboTeam1.FormattingEnabled = true;
-            this.cboTeam1.Location = new System.Drawing.Point(85, 236);
+            this.cboTeam1.Location = new System.Drawing.Point(95, 236);
             this.cboTeam1.Name = "cboTeam1";
             this.cboTeam1.Size = new System.Drawing.Size(121, 21);
             this.cboTeam1.TabIndex = 5;
@@ -116,7 +128,7 @@
             // cboTeam2
             // 
             this.cboTeam2.FormattingEnabled = true;
-            this.cboTeam2.Location = new System.Drawing.Point(96, 236);
+            this.cboTeam2.Location = new System.Drawing.Point(97, 236);
             this.cboTeam2.Name = "cboTeam2";
             this.cboTeam2.Size = new System.Drawing.Size(121, 21);
             this.cboTeam2.TabIndex = 6;
@@ -127,7 +139,7 @@
             // 
             // btnSerial1Open
             // 
-            this.btnSerial1Open.Location = new System.Drawing.Point(212, 234);
+            this.btnSerial1Open.Location = new System.Drawing.Point(222, 235);
             this.btnSerial1Open.Name = "btnSerial1Open";
             this.btnSerial1Open.Size = new System.Drawing.Size(48, 23);
             this.btnSerial1Open.TabIndex = 7;
@@ -137,7 +149,7 @@
             // 
             // btnSerial2Open
             // 
-            this.btnSerial2Open.Location = new System.Drawing.Point(223, 234);
+            this.btnSerial2Open.Location = new System.Drawing.Point(224, 235);
             this.btnSerial2Open.Name = "btnSerial2Open";
             this.btnSerial2Open.Size = new System.Drawing.Size(48, 23);
             this.btnSerial2Open.TabIndex = 8;
@@ -164,6 +176,11 @@
             // pnlTeam1
             // 
             this.pnlTeam1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam1.Controls.Add(this.chkFastest1);
+            this.pnlTeam1.Controls.Add(this.lblScore1);
+            this.pnlTeam1.Controls.Add(this.btnAdd15);
+            this.pnlTeam1.Controls.Add(this.numScore1);
+            this.pnlTeam1.Controls.Add(this.btnAdd11);
             this.pnlTeam1.Controls.Add(this.lblTimeSinceSet1);
             this.pnlTeam1.Controls.Add(this.txtTimeSinceSet1);
             this.pnlTeam1.Controls.Add(this.lblComPort1);
@@ -179,7 +196,7 @@
             // lblComPort1
             // 
             this.lblComPort1.AutoSize = true;
-            this.lblComPort1.Location = new System.Drawing.Point(3, 239);
+            this.lblComPort1.Location = new System.Drawing.Point(13, 239);
             this.lblComPort1.Name = "lblComPort1";
             this.lblComPort1.Size = new System.Drawing.Size(78, 13);
             this.lblComPort1.TabIndex = 14;
@@ -188,7 +205,12 @@
             // pnlTeam2
             // 
             this.pnlTeam2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam2.Controls.Add(this.chkFastest2);
+            this.pnlTeam2.Controls.Add(this.lblScore2);
+            this.pnlTeam2.Controls.Add(this.btnAdd25);
             this.pnlTeam2.Controls.Add(this.lblTimeSinceSet2);
+            this.pnlTeam2.Controls.Add(this.numScore2);
+            this.pnlTeam2.Controls.Add(this.btnAdd21);
             this.pnlTeam2.Controls.Add(this.txtTimeSinceSet2);
             this.pnlTeam2.Controls.Add(this.lblComPort2);
             this.pnlTeam2.Controls.Add(this.txtLastAnswerTeam2);
@@ -203,7 +225,7 @@
             // lblComPort2
             // 
             this.lblComPort2.AutoSize = true;
-            this.lblComPort2.Location = new System.Drawing.Point(12, 239);
+            this.lblComPort2.Location = new System.Drawing.Point(13, 239);
             this.lblComPort2.Name = "lblComPort2";
             this.lblComPort2.Size = new System.Drawing.Size(78, 13);
             this.lblComPort2.TabIndex = 13;
@@ -330,21 +352,111 @@
             // 
             this.btnStartTimer.Location = new System.Drawing.Point(12, 99);
             this.btnStartTimer.Name = "btnStartTimer";
-            this.btnStartTimer.Size = new System.Drawing.Size(75, 23);
+            this.btnStartTimer.Size = new System.Drawing.Size(160, 23);
             this.btnStartTimer.TabIndex = 20;
-            this.btnStartTimer.Text = "Start timer";
+            this.btnStartTimer.Text = "Start timer + antwoorden legen";
             this.btnStartTimer.UseVisualStyleBackColor = true;
             this.btnStartTimer.Click += new System.EventHandler(this.btnStartTimer_Click);
             // 
             // btnSendScores
             // 
-            this.btnSendScores.Location = new System.Drawing.Point(99, 99);
+            this.btnSendScores.Location = new System.Drawing.Point(178, 99);
             this.btnSendScores.Name = "btnSendScores";
             this.btnSendScores.Size = new System.Drawing.Size(89, 23);
             this.btnSendScores.TabIndex = 21;
             this.btnSendScores.Text = "Verstuur scores";
             this.btnSendScores.UseVisualStyleBackColor = true;
             this.btnSendScores.Click += new System.EventHandler(this.btnSendScores_Click);
+            // 
+            // btnAdd11
+            // 
+            this.btnAdd11.Location = new System.Drawing.Point(16, 145);
+            this.btnAdd11.Name = "btnAdd11";
+            this.btnAdd11.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd11.TabIndex = 17;
+            this.btnAdd11.Text = "+1";
+            this.btnAdd11.UseVisualStyleBackColor = true;
+            this.btnAdd11.Click += new System.EventHandler(this.btnAdd11_Click);
+            // 
+            // btnAdd15
+            // 
+            this.btnAdd15.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd15.Name = "btnAdd15";
+            this.btnAdd15.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd15.TabIndex = 18;
+            this.btnAdd15.Text = "+5";
+            this.btnAdd15.UseVisualStyleBackColor = true;
+            this.btnAdd15.Click += new System.EventHandler(this.btnAdd15_Click);
+            // 
+            // numScore1
+            // 
+            this.numScore1.Location = new System.Drawing.Point(16, 119);
+            this.numScore1.Name = "numScore1";
+            this.numScore1.Size = new System.Drawing.Size(120, 20);
+            this.numScore1.TabIndex = 18;
+            // 
+            // btnAdd25
+            // 
+            this.btnAdd25.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd25.Name = "btnAdd25";
+            this.btnAdd25.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd25.TabIndex = 21;
+            this.btnAdd25.Text = "+5";
+            this.btnAdd25.UseVisualStyleBackColor = true;
+            this.btnAdd25.Click += new System.EventHandler(this.btnAdd25_Click);
+            // 
+            // numScore2
+            // 
+            this.numScore2.Location = new System.Drawing.Point(16, 119);
+            this.numScore2.Name = "numScore2";
+            this.numScore2.Size = new System.Drawing.Size(120, 20);
+            this.numScore2.TabIndex = 20;
+            // 
+            // btnAdd21
+            // 
+            this.btnAdd21.Location = new System.Drawing.Point(16, 145);
+            this.btnAdd21.Name = "btnAdd21";
+            this.btnAdd21.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd21.TabIndex = 19;
+            this.btnAdd21.Text = "+1";
+            this.btnAdd21.UseVisualStyleBackColor = true;
+            this.btnAdd21.Click += new System.EventHandler(this.btnAdd21_Click);
+            // 
+            // lblScore1
+            // 
+            this.lblScore1.AutoSize = true;
+            this.lblScore1.Location = new System.Drawing.Point(13, 103);
+            this.lblScore1.Name = "lblScore1";
+            this.lblScore1.Size = new System.Drawing.Size(35, 13);
+            this.lblScore1.TabIndex = 19;
+            this.lblScore1.Text = "Score";
+            // 
+            // lblScore2
+            // 
+            this.lblScore2.AutoSize = true;
+            this.lblScore2.Location = new System.Drawing.Point(13, 103);
+            this.lblScore2.Name = "lblScore2";
+            this.lblScore2.Size = new System.Drawing.Size(35, 13);
+            this.lblScore2.TabIndex = 20;
+            this.lblScore2.Text = "Score";
+            // 
+            // chkFastest1
+            // 
+            this.chkFastest1.AutoSize = true;
+            this.chkFastest1.Location = new System.Drawing.Point(307, 78);
+            this.chkFastest1.Name = "chkFastest1";
+            this.chkFastest1.Size = new System.Drawing.Size(15, 14);
+            this.chkFastest1.TabIndex = 20;
+            this.chkFastest1.UseVisualStyleBackColor = true;
+            // 
+            // chkFastest2
+            // 
+            this.chkFastest2.AutoSize = true;
+            this.chkFastest2.Location = new System.Drawing.Point(307, 81);
+            this.chkFastest2.Name = "chkFastest2";
+            this.chkFastest2.Size = new System.Drawing.Size(15, 14);
+            this.chkFastest2.TabIndex = 21;
+            this.chkFastest2.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -374,6 +486,8 @@
             this.pnlTeam1.PerformLayout();
             this.pnlTeam2.ResumeLayout(false);
             this.pnlTeam2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numScore1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScore2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,6 +526,16 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnStartTimer;
         private System.Windows.Forms.Button btnSendScores;
+        private System.Windows.Forms.Button btnAdd15;
+        private System.Windows.Forms.NumericUpDown numScore1;
+        private System.Windows.Forms.Button btnAdd11;
+        private System.Windows.Forms.Button btnAdd25;
+        private System.Windows.Forms.NumericUpDown numScore2;
+        private System.Windows.Forms.Button btnAdd21;
+        private System.Windows.Forms.Label lblScore1;
+        private System.Windows.Forms.Label lblScore2;
+        private System.Windows.Forms.CheckBox chkFastest1;
+        private System.Windows.Forms.CheckBox chkFastest2;
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
+using System.Linq;
 using System.Threading;
 
 namespace GameNightSerialCommunications
@@ -53,10 +54,11 @@ namespace GameNightSerialCommunications
 
         public void CloseAllPorts()
         {
-            openPorts.ForEach(serialPort =>
+            var localPorts = openPorts.ToArray();
+            foreach (var port in localPorts)
             {
-                ClosePort(serialPort);
-            });
+                ClosePort(port);
+            };
         }
 
         public void SendFault(SerialPort serialPort)
