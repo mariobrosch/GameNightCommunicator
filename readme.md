@@ -4,6 +4,5 @@ An app to communicate via COM port (bluetooth for example) to send and receive d
 
 
 ## TODO
-* Sending signals should wait before last is ready (otherwise Arduino can get in a fault state)
 * Set timer mode, so the gamehost can see which player was first
 * Add some led shows
