@@ -53,6 +53,13 @@
             this.btnFault2 = new System.Windows.Forms.Button();
             this.btnGoodAll = new System.Windows.Forms.Button();
             this.btnFaultAll = new System.Windows.Forms.Button();
+            this.txtTimeSinceSet1 = new System.Windows.Forms.TextBox();
+            this.txtTimeSinceSet2 = new System.Windows.Forms.TextBox();
+            this.lblTimeSinceSet1 = new System.Windows.Forms.Label();
+            this.lblTimeSinceSet2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnStartTimer = new System.Windows.Forms.Button();
+            this.btnSendScores = new System.Windows.Forms.Button();
             this.pnlTeam1.SuspendLayout();
             this.pnlTeam2.SuspendLayout();
             this.SuspendLayout();
@@ -157,6 +164,8 @@
             // pnlTeam1
             // 
             this.pnlTeam1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam1.Controls.Add(this.lblTimeSinceSet1);
+            this.pnlTeam1.Controls.Add(this.txtTimeSinceSet1);
             this.pnlTeam1.Controls.Add(this.lblComPort1);
             this.pnlTeam1.Controls.Add(this.txtLastAnswerTeam1);
             this.pnlTeam1.Controls.Add(this.lblLastAnswerTeam1);
@@ -179,6 +188,8 @@
             // pnlTeam2
             // 
             this.pnlTeam2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam2.Controls.Add(this.lblTimeSinceSet2);
+            this.pnlTeam2.Controls.Add(this.txtTimeSinceSet2);
             this.pnlTeam2.Controls.Add(this.lblComPort2);
             this.pnlTeam2.Controls.Add(this.txtLastAnswerTeam2);
             this.pnlTeam2.Controls.Add(this.lblLastAnswerTeam2);
@@ -222,6 +233,7 @@
             this.btnSend2.TabIndex = 15;
             this.btnSend2.Text = "Naar team 2";
             this.btnSend2.UseVisualStyleBackColor = true;
+            this.btnSend2.Click += new System.EventHandler(this.btnSend2_Click);
             // 
             // btnSend1
             // 
@@ -231,6 +243,7 @@
             this.btnSend1.TabIndex = 16;
             this.btnSend1.Text = "Naar team 1";
             this.btnSend1.UseVisualStyleBackColor = true;
+            this.btnSend1.Click += new System.EventHandler(this.btnSend1_Click);
             // 
             // btnGood2
             // 
@@ -272,12 +285,76 @@
             this.btnFaultAll.UseVisualStyleBackColor = true;
             this.btnFaultAll.Click += new System.EventHandler(this.btnFaultAll_Click);
             // 
+            // txtTimeSinceSet1
+            // 
+            this.txtTimeSinceSet1.Location = new System.Drawing.Point(16, 75);
+            this.txtTimeSinceSet1.Name = "txtTimeSinceSet1";
+            this.txtTimeSinceSet1.Size = new System.Drawing.Size(285, 20);
+            this.txtTimeSinceSet1.TabIndex = 15;
+            // 
+            // txtTimeSinceSet2
+            // 
+            this.txtTimeSinceSet2.Location = new System.Drawing.Point(16, 75);
+            this.txtTimeSinceSet2.Name = "txtTimeSinceSet2";
+            this.txtTimeSinceSet2.Size = new System.Drawing.Size(285, 20);
+            this.txtTimeSinceSet2.TabIndex = 16;
+            // 
+            // lblTimeSinceSet1
+            // 
+            this.lblTimeSinceSet1.AutoSize = true;
+            this.lblTimeSinceSet1.Location = new System.Drawing.Point(16, 56);
+            this.lblTimeSinceSet1.Name = "lblTimeSinceSet1";
+            this.lblTimeSinceSet1.Size = new System.Drawing.Size(195, 13);
+            this.lblTimeSinceSet1.TabIndex = 16;
+            this.lblTimeSinceSet1.Text = "Tijd sinds start knop en eerste antwoord";
+            // 
+            // lblTimeSinceSet2
+            // 
+            this.lblTimeSinceSet2.AutoSize = true;
+            this.lblTimeSinceSet2.Location = new System.Drawing.Point(13, 56);
+            this.lblTimeSinceSet2.Name = "lblTimeSinceSet2";
+            this.lblTimeSinceSet2.Size = new System.Drawing.Size(195, 13);
+            this.lblTimeSinceSet2.TabIndex = 17;
+            this.lblTimeSinceSet2.Text = "Tijd sinds start knop en eerste antwoord";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(650, 99);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 19;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnStartTimer
+            // 
+            this.btnStartTimer.Location = new System.Drawing.Point(12, 99);
+            this.btnStartTimer.Name = "btnStartTimer";
+            this.btnStartTimer.Size = new System.Drawing.Size(75, 23);
+            this.btnStartTimer.TabIndex = 20;
+            this.btnStartTimer.Text = "Start timer";
+            this.btnStartTimer.UseVisualStyleBackColor = true;
+            this.btnStartTimer.Click += new System.EventHandler(this.btnStartTimer_Click);
+            // 
+            // btnSendScores
+            // 
+            this.btnSendScores.Location = new System.Drawing.Point(99, 99);
+            this.btnSendScores.Name = "btnSendScores";
+            this.btnSendScores.Size = new System.Drawing.Size(89, 23);
+            this.btnSendScores.TabIndex = 21;
+            this.btnSendScores.Text = "Verstuur scores";
+            this.btnSendScores.UseVisualStyleBackColor = true;
+            this.btnSendScores.Click += new System.EventHandler(this.btnSendScores_Click);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 450);
+            this.Controls.Add(this.btnSendScores);
+            this.Controls.Add(this.btnStartTimer);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnGoodAll);
             this.Controls.Add(this.btnFaultAll);
             this.Controls.Add(this.btnGood2);
@@ -328,6 +405,13 @@
         private System.Windows.Forms.Button btnFault2;
         private System.Windows.Forms.Button btnGoodAll;
         private System.Windows.Forms.Button btnFaultAll;
+        private System.Windows.Forms.Label lblTimeSinceSet1;
+        private System.Windows.Forms.TextBox txtTimeSinceSet1;
+        private System.Windows.Forms.Label lblTimeSinceSet2;
+        private System.Windows.Forms.TextBox txtTimeSinceSet2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnStartTimer;
+        private System.Windows.Forms.Button btnSendScores;
     }
 }
 

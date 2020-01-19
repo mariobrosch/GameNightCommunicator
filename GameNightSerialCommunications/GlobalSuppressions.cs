@@ -2,21 +2,3 @@
 // attributes that are applied to this project.
 // Project-level suppressions either have no target or are given
 // a specific target and scoped to a namespace, type, member, etc.
-
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnSerial1Open_Click(System.Object,System.EventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnSerial2Open_Click(System.Object,System.EventArgs)")]
-
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.SerialHandler.SendFault(System.IO.Ports.SerialPort)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.SerialHandler.SendGood(System.IO.Ports.SerialPort)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnSendAll_Click(System.Object,System.EventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.serialPort1_DataReceived(System.Object,System.IO.Ports.SerialDataReceivedEventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnFault1_Click(System.Object,System.EventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnGood1_Click(System.Object,System.EventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.setDataReceived(System.String)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.serialTeam2_DataReceived(System.Object,System.IO.Ports.SerialDataReceivedEventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnSerial2Open_Click(System.Object,System.EventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnFaultAll_Click(System.Object,System.EventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnSerial1Open_Click(System.Object,System.EventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnGoodAll_Click(System.Object,System.EventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnFault2_Click(System.Object,System.EventArgs)")]
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:GameNightSerialCommunications.MainForm.btnGood2_Click(System.Object,System.EventArgs)")]

@@ -131,5 +131,27 @@ namespace GameNightSerialCommunications
         {
             Task.Run(() => sc.SendGood(serialTeam2));
         }
+
+        private void btnSendScores_Click(object sender, EventArgs e)
+        {
+            sc.sendMessageToTeam(serialTeam1, "0 PUNTEN");
+            sc.sendMessageToTeam(serialTeam2, "0 PUNTEN");
+            MessageBox.Show("Needs more implementation of course");
+        }
+
+        private void btnSend1_Click(object sender, EventArgs e)
+        {
+            sc.sendMessageToTeam(serialTeam1, txtCommand.Text);
+        }
+
+        private void btnSend2_Click(object sender, EventArgs e)
+        {
+            sc.sendMessageToTeam(serialTeam2, txtCommand.Text);
+        }
+
+        private void btnStartTimer_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Needs more implementation of course");
+        }
     }
 }

@@ -146,5 +146,18 @@ namespace GameNightSerialCommunications
                 busyPorts.Remove(serialPort);
             }
         }
+
+        internal void sendMessageToTeam(SerialPort serialPort, string message)
+        {
+            if (serialPort.IsOpen)
+            {
+                if (!isPortBusy(serialPort))
+                {
+                    setPortAvailable(serialPort);
+                    serialPort.WriteLine(message);
+                    setPortAvailable(serialPort);
+                }
+            }
+        }
     }
 }
