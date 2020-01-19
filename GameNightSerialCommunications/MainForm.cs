@@ -14,15 +14,16 @@ namespace GameNightSerialCommunications
             cboTeam1.DataSource = ports;
             var ports2 = SerialPort.GetPortNames();
             cboTeam2.DataSource = ports2;
+            cboComsTo.SelectedIndex = 0;
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            if (serialTeam1.IsOpen)
+            if (serialTeam1.IsOpen && (cboComsTo.SelectedIndex == 0 || cboComsTo.SelectedIndex == 1))
             {
                 serialTeam1.WriteLine(txtCommand.Text);
             }
-            if (serialTeam2.IsOpen)
+            if (serialTeam2.IsOpen && (cboComsTo.SelectedIndex == 0 || cboComsTo.SelectedIndex == 2))
             {
                 serialTeam2.WriteLine(txtCommand.Text);
             }
@@ -138,8 +139,13 @@ namespace GameNightSerialCommunications
 
         private void serialTeam2_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-            string line = serialTeam1.ReadLine();
+            string line = serialTeam2.ReadLine();
             setDataReceived("TEAM2-" + line);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

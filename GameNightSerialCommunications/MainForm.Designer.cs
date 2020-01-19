@@ -40,11 +40,12 @@
             this.serialTeam2 = new System.IO.Ports.SerialPort(this.components);
             this.btnSerial1Open = new System.Windows.Forms.Button();
             this.btnSerial2Open = new System.Windows.Forms.Button();
+            this.cboComsTo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(376, 12);
+            this.btnSend.Location = new System.Drawing.Point(464, 13);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 1;
@@ -132,12 +133,26 @@
             this.btnSerial2Open.UseVisualStyleBackColor = true;
             this.btnSerial2Open.Click += new System.EventHandler(this.btnSerial2Open_Click);
             // 
+            // cboComsTo
+            // 
+            this.cboComsTo.FormattingEnabled = true;
+            this.cboComsTo.Items.AddRange(new object[] {
+            "Beide teams",
+            "Team 1",
+            "Team 2"});
+            this.cboComsTo.Location = new System.Drawing.Point(376, 13);
+            this.cboComsTo.Name = "cboComsTo";
+            this.cboComsTo.Size = new System.Drawing.Size(82, 21);
+            this.cboComsTo.TabIndex = 9;
+            this.cboComsTo.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSend;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cboComsTo);
             this.Controls.Add(this.btnSerial2Open);
             this.Controls.Add(this.btnSerial1Open);
             this.Controls.Add(this.cboTeam2);
@@ -168,6 +183,7 @@
         private System.IO.Ports.SerialPort serialTeam2;
         private System.Windows.Forms.Button btnSerial1Open;
         private System.Windows.Forms.Button btnSerial2Open;
+        private System.Windows.Forms.ComboBox cboComsTo;
     }
 }
 
