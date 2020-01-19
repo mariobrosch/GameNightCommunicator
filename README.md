@@ -3,4 +3,6 @@ An app to communicate via COM port (bluetooth for example) to send and receive d
 
 
 
-## to be filled later with needed information
+## TODO
+* Set timer mode, so the gamehost can see which player was first
+* Add some led shows

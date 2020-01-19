@@ -156,6 +156,7 @@
             // 
             // pnlTeam1
             // 
+            this.pnlTeam1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlTeam1.Controls.Add(this.lblComPort1);
             this.pnlTeam1.Controls.Add(this.txtLastAnswerTeam1);
             this.pnlTeam1.Controls.Add(this.lblLastAnswerTeam1);
@@ -177,12 +178,13 @@
             // 
             // pnlTeam2
             // 
+            this.pnlTeam2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlTeam2.Controls.Add(this.lblComPort2);
             this.pnlTeam2.Controls.Add(this.txtLastAnswerTeam2);
             this.pnlTeam2.Controls.Add(this.lblLastAnswerTeam2);
             this.pnlTeam2.Controls.Add(this.cboTeam2);
             this.pnlTeam2.Controls.Add(this.btnSerial2Open);
-            this.pnlTeam2.Location = new System.Drawing.Point(361, 170);
+            this.pnlTeam2.Location = new System.Drawing.Point(381, 170);
             this.pnlTeam2.Name = "pnlTeam2";
             this.pnlTeam2.Size = new System.Drawing.Size(343, 268);
             this.pnlTeam2.TabIndex = 14;
@@ -275,7 +277,7 @@
             this.AcceptButton = this.btnSendAll;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(737, 450);
             this.Controls.Add(this.btnGoodAll);
             this.Controls.Add(this.btnFaultAll);
             this.Controls.Add(this.btnGood2);

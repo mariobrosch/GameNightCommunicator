@@ -8,7 +8,7 @@ namespace GameNightSerialCommunications
 {
     public partial class MainForm : Form
     {
-        SerialHandler sc = new SerialHandler();
+        readonly SerialHandler sc = new SerialHandler();
 
         public MainForm()
         {
