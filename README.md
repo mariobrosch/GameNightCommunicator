@@ -22,7 +22,7 @@ The application has some functionality to communicate through the COM port. The 
   |button1|button1|Unused, for alignment purposes only during development, should be removed before version 1|
   |btnStartTimer|Start timer + antwoorden legen|Set the timer to zero, empties answer fields and sends messages to the COM ports to clear display and turns off all LEDs|
   |btnSendScores|Verstuur scores|Sends the currents scores to each COM port. So team 1 will see his points total and team 2 will see his own scores on their display|
-  |btnAdd<1/2><1/5>|+<1/5>|Adds score to the total for the team|
+  |btnAdd<1/2><1-5>|+<1-5>|Adds score to the total for the team|
   |numscore<1/2>| |Displays the current team score and you are able to change it here|
   |chkFastest<1/2>| |If checked this team was the fastest responder|
   
