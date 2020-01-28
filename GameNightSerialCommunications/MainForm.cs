@@ -23,11 +23,37 @@ namespace GameNightSerialCommunications
         {
             InitializeComponent();
 
-            session = new Session();
-            session.team1 = new Team();
-            session.team2 = new Team();
-            session.team1.scores = new List<Score>();
-            session.team2.scores = new List<Score>();
+            if (File.Exists(sessionFileLocation))
+            {
+                // Does the previous session contains valid data?
+                try
+                {
+                    var prevSession = SessionHandler.FromXml<Session>(File.ReadAllText(sessionFileLocation));
+                    if (prevSession.team1.scores.Count > 0 || prevSession.team2.scores.Count > 0)
+                    {
+                        if (MessageBox.Show("Vorige sessie hervatten?","Hervatten?",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            reloadSession(prevSession);
+                        }
+                    }
+                }
+                catch
+                {
+                    // Error, so previous session was faulty, no worries :)
+                }
+            }
+
+            session = new Session
+            {
+                team1 = new Team()
+                {
+                    scores = new List<Score>()
+                },
+                team2 = new Team()
+                {
+                    scores = new List<Score>()
+                }
+            };
             var ports = SerialPort.GetPortNames();
             cboTeam1.DataSource = ports;
             var ports2 = SerialPort.GetPortNames();
@@ -149,6 +175,7 @@ namespace GameNightSerialCommunications
                 btnSerial1Open.Text = "Open";
                 session.team1.comPortUsed = "";
             }
+            saveSession();
         }
 
         private void btnSerial2Open_Click(object sender, EventArgs e)
@@ -171,6 +198,7 @@ namespace GameNightSerialCommunications
                 btnSerial2Open.Text = "Open";
                 session.team2.comPortUsed = "";
             }
+            saveSession();
         }
 
 
@@ -264,16 +292,22 @@ namespace GameNightSerialCommunications
             }
             if (ofdSessionLoad.ShowDialog() == DialogResult.Yes)
             {
-                File.Copy(ofdSessionLoad.FileName, sessionFileLocation, true);
-                reloadSession();
+                var prevSession = SessionHandler.FromXml<Session>(File.ReadAllText(ofdSessionLoad.FileName));
+                reloadSession(prevSession);
             }
         }
 
-        private void reloadSession()
+        private void reloadSession(Session prevSession)
         {
-            throw new NotImplementedException();
-        }
+            session = prevSession;
 
+            currentQuestion = SessionHandler.GetLatestQuestion(session);
+            lblQuestion.Text = currentQuestion.ToString();
+            numScore1.Value = SessionHandler.GetScoreForTeam(1, session);
+            numScore2.Value = SessionHandler.GetScoreForTeam(2, session);
+            txtTeamName1.Text = session.team1.teamName;
+            txtTeamName2.Text = session.team2.teamName;
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -283,16 +317,25 @@ namespace GameNightSerialCommunications
             addScore(team, score);
         }
 
-        private void txtTeamName1_TextChanged(object sender, EventArgs e)
+        private void saveTeamName(int team, string text)
         {
-            session.team1.teamName = txtTeamName1.Text;
+            if (team ==  1)
+            {
+                session.team1.teamName = text;
+            }
+            if (team == 2)
+            {
+                session.team2.teamName = text;
+            }
             saveSession();
         }
 
-        private void txtTeamName2_TextChanged(object sender, EventArgs e)
+        private void txtTeamName_TextChanged(object sender, EventArgs e)
         {
-
-            session.team2.teamName = txtTeamName2.Text;
+            var textbox = (sender as TextBox);
+            string teamName = textbox.Text;
+            int team = Convert.ToInt32(textbox.Name.Replace("txtTeamName", ""));
+            saveTeamName(team, teamName);
             saveSession();
         }
 

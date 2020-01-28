@@ -587,7 +587,7 @@
             this.txtTeamName1.Name = "txtTeamName1";
             this.txtTeamName1.Size = new System.Drawing.Size(121, 20);
             this.txtTeamName1.TabIndex = 25;
-            this.txtTeamName1.TextChanged += new System.EventHandler(this.txtTeamName1_TextChanged);
+            this.txtTeamName1.TextChanged += new System.EventHandler(this.txtTeamName_TextChanged);
             // 
             // txtTeamName2
             // 
@@ -596,7 +596,7 @@
             this.txtTeamName2.Name = "txtTeamName2";
             this.txtTeamName2.Size = new System.Drawing.Size(121, 20);
             this.txtTeamName2.TabIndex = 27;
-            this.txtTeamName2.TextChanged += new System.EventHandler(this.txtTeamName2_TextChanged);
+            this.txtTeamName2.TextChanged += new System.EventHandler(this.txtTeamName_TextChanged);
             // 
             // lblTeamName2
             // 

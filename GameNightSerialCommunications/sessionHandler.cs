@@ -1,6 +1,7 @@
 ﻿using GameNightSerialCommunications.Models;
 using System;
 using System.IO;
+using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -60,6 +61,55 @@ namespace GameNightSerialCommunications
                     session.team2.scores.Add(score);
                 }
             }
+        }
+
+        /// <summary>
+        /// Get the latest question
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
+        internal static int GetLatestQuestion(Session session)
+        {
+            var scores1 = session.team1.scores;
+            var scores2 = session.team2.scores;
+
+            var question1 = scores1.Count > 0 ? scores1.Max(t => t.question) : 0;
+            var question2 = scores2.Count > 0 ?scores2.Max(t => t.question) : 0;
+                       
+            return question1 > question2 ? question1 : question2;
+        }
+
+        /// <summary>
+        /// Get the total score for a team
+        /// </summary>
+        /// <param name="team"></param>
+        /// <param name="session"></param>
+        /// <returns></returns>
+        internal static int GetScoreForTeam(int team, Session session)
+        {
+            if (team == 1)
+            {
+                var scores = session.team1.scores;
+                int returnValue = 0;
+                foreach(Score score in scores)
+                {
+                    returnValue += score.points;
+                }
+
+                return returnValue;
+            }
+            if ( team == 2)
+            {
+                var scores = session.team2.scores;
+                int returnValue = 0;
+                foreach (Score score in scores)
+                {
+                    returnValue += score.points;
+                }
+
+                return returnValue;
+            }
+            return 0;
         }
     }
 }
