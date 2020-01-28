@@ -13,11 +13,15 @@ namespace GameNightSerialCommunications
         DateTime setDate;
         readonly string sessionFileLocation = Path.Combine(Directory.GetCurrentDirectory(), "currentSession.gns");
         readonly string defaultSaveLocation = Path.Combine(Directory.GetCurrentDirectory(), "savedSessions");
+        Session session;
 
         public MainForm()
         {
             InitializeComponent();
 
+            session = new Session();
+            session.team1 = new Models.Team();
+            session.team2 = new Models.Team();
             var ports = SerialPort.GetPortNames();
             cboTeam1.DataSource = ports;
             var ports2 = SerialPort.GetPortNames();
@@ -127,11 +131,13 @@ namespace GameNightSerialCommunications
                 }
                 sc.OpenPort(serialTeam1);
                 btnSerial1Open.Text = "Close";
+                session.team1.comPortUsed = serialTeam1.PortName;
             }
             else
             {
                 sc.ClosePort(serialTeam1);
                 btnSerial1Open.Text = "Open";
+                session.team1.comPortUsed = "";
             }
         }
 
@@ -147,11 +153,13 @@ namespace GameNightSerialCommunications
                 }
                 sc.OpenPort(serialTeam2);
                 btnSerial2Open.Text = "Close";
+                session.team2.comPortUsed = serialTeam2.PortName;
             }
             else
             {
                 sc.ClosePort(serialTeam2);
                 btnSerial2Open.Text = "Open";
+                session.team2.comPortUsed = "";
             }
         }
 
@@ -298,6 +306,16 @@ namespace GameNightSerialCommunications
         private void btnAdd24_Click(object sender, EventArgs e)
         {
             numScore2.Value += 4;
+        }
+
+        private void txtTeamName1_TextChanged(object sender, EventArgs e)
+        {
+            session.team1.teamName = txtTeamName1.Text;
+        }
+
+        private void txtTeamName2_TextChanged(object sender, EventArgs e)
+        {
+            session.team2.teamName = txtTeamName2.Text;
         }
     }
 }

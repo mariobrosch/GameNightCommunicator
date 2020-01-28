@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GameNightSerialCommunications.Models;
 
 namespace GameNightSerialCommunications
 {
     internal class Session
     {
-
+        public Team team1;
+        public Team team2;
     }
 }

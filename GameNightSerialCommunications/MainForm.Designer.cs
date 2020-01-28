@@ -79,6 +79,10 @@
             this.btnAdd24 = new System.Windows.Forms.Button();
             this.btnAdd23 = new System.Windows.Forms.Button();
             this.btnAdd22 = new System.Windows.Forms.Button();
+            this.lblTeamName1 = new System.Windows.Forms.Label();
+            this.txtTeamName1 = new System.Windows.Forms.TextBox();
+            this.txtTeamName2 = new System.Windows.Forms.TextBox();
+            this.lblTeamName2 = new System.Windows.Forms.Label();
             this.pnlTeam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
             this.pnlTeam2.SuspendLayout();
@@ -129,7 +133,7 @@
             // cboTeam1
             // 
             this.cboTeam1.FormattingEnabled = true;
-            this.cboTeam1.Location = new System.Drawing.Point(95, 236);
+            this.cboTeam1.Location = new System.Drawing.Point(116, 236);
             this.cboTeam1.Name = "cboTeam1";
             this.cboTeam1.Size = new System.Drawing.Size(121, 21);
             this.cboTeam1.TabIndex = 5;
@@ -137,7 +141,7 @@
             // cboTeam2
             // 
             this.cboTeam2.FormattingEnabled = true;
-            this.cboTeam2.Location = new System.Drawing.Point(97, 236);
+            this.cboTeam2.Location = new System.Drawing.Point(111, 236);
             this.cboTeam2.Name = "cboTeam2";
             this.cboTeam2.Size = new System.Drawing.Size(121, 21);
             this.cboTeam2.TabIndex = 6;
@@ -148,7 +152,7 @@
             // 
             // btnSerial1Open
             // 
-            this.btnSerial1Open.Location = new System.Drawing.Point(222, 235);
+            this.btnSerial1Open.Location = new System.Drawing.Point(243, 235);
             this.btnSerial1Open.Name = "btnSerial1Open";
             this.btnSerial1Open.Size = new System.Drawing.Size(48, 23);
             this.btnSerial1Open.TabIndex = 7;
@@ -158,7 +162,7 @@
             // 
             // btnSerial2Open
             // 
-            this.btnSerial2Open.Location = new System.Drawing.Point(224, 235);
+            this.btnSerial2Open.Location = new System.Drawing.Point(238, 235);
             this.btnSerial2Open.Name = "btnSerial2Open";
             this.btnSerial2Open.Size = new System.Drawing.Size(48, 23);
             this.btnSerial2Open.TabIndex = 8;
@@ -185,6 +189,8 @@
             // pnlTeam1
             // 
             this.pnlTeam1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam1.Controls.Add(this.txtTeamName1);
+            this.pnlTeam1.Controls.Add(this.lblTeamName1);
             this.pnlTeam1.Controls.Add(this.btnAdd12);
             this.pnlTeam1.Controls.Add(this.btnAdd14);
             this.pnlTeam1.Controls.Add(this.btnAdd13);
@@ -279,6 +285,8 @@
             // pnlTeam2
             // 
             this.pnlTeam2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam2.Controls.Add(this.txtTeamName2);
+            this.pnlTeam2.Controls.Add(this.lblTeamName2);
             this.pnlTeam2.Controls.Add(this.btnAdd22);
             this.pnlTeam2.Controls.Add(this.btnAdd23);
             this.pnlTeam2.Controls.Add(this.btnAdd24);
@@ -555,6 +563,42 @@
             this.btnAdd22.UseVisualStyleBackColor = true;
             this.btnAdd22.Click += new System.EventHandler(this.btnAdd22_Click);
             // 
+            // lblTeamName1
+            // 
+            this.lblTeamName1.AutoSize = true;
+            this.lblTeamName1.Location = new System.Drawing.Point(13, 213);
+            this.lblTeamName1.Name = "lblTeamName1";
+            this.lblTeamName1.Size = new System.Drawing.Size(97, 13);
+            this.lblTeamName1.TabIndex = 24;
+            this.lblTeamName1.Text = "Teamnaam (max 8)";
+            // 
+            // txtTeamName1
+            // 
+            this.txtTeamName1.Location = new System.Drawing.Point(116, 210);
+            this.txtTeamName1.MaxLength = 8;
+            this.txtTeamName1.Name = "txtTeamName1";
+            this.txtTeamName1.Size = new System.Drawing.Size(121, 20);
+            this.txtTeamName1.TabIndex = 25;
+            this.txtTeamName1.TextChanged += new System.EventHandler(this.txtTeamName1_TextChanged);
+            // 
+            // txtTeamName2
+            // 
+            this.txtTeamName2.Location = new System.Drawing.Point(111, 209);
+            this.txtTeamName2.MaxLength = 8;
+            this.txtTeamName2.Name = "txtTeamName2";
+            this.txtTeamName2.Size = new System.Drawing.Size(121, 20);
+            this.txtTeamName2.TabIndex = 27;
+            this.txtTeamName2.TextChanged += new System.EventHandler(this.txtTeamName2_TextChanged);
+            // 
+            // lblTeamName2
+            // 
+            this.lblTeamName2.AutoSize = true;
+            this.lblTeamName2.Location = new System.Drawing.Point(13, 213);
+            this.lblTeamName2.Name = "lblTeamName2";
+            this.lblTeamName2.Size = new System.Drawing.Size(97, 13);
+            this.lblTeamName2.TabIndex = 26;
+            this.lblTeamName2.Text = "Teamnaam (max 8)";
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
@@ -643,6 +687,10 @@
         private System.Windows.Forms.Button btnAdd22;
         private System.Windows.Forms.Button btnAdd23;
         private System.Windows.Forms.Button btnAdd24;
+        private System.Windows.Forms.TextBox txtTeamName1;
+        private System.Windows.Forms.Label lblTeamName1;
+        private System.Windows.Forms.TextBox txtTeamName2;
+        private System.Windows.Forms.Label lblTeamName2;
     }
 }
 

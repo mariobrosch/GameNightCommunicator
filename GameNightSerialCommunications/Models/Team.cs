@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace GameNightSerialCommunications.Models
 {
-    class Team
+    internal class Team
     {
+        public string teamName;
+        public List<Score> scores;
+        public string comPortUsed;
     }
 }
