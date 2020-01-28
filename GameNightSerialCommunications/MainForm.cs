@@ -219,26 +219,6 @@ namespace GameNightSerialCommunications
             setDate = DateTime.Now;
         }
 
-        private void btnAdd11_Click(object sender, EventArgs e)
-        {
-            addScore(1, 1);
-        }
-
-        private void btnAdd15_Click(object sender, EventArgs e)
-        {
-            addScore(1, 5);
-        }
-
-        private void btnAdd21_Click(object sender, EventArgs e)
-        {
-            addScore(2, 1);
-        }
-
-        private void btnAdd25_Click(object sender, EventArgs e)
-        {
-            addScore(2, 5);
-        }
-
         void resetAnswerFields()
         {
             sc.SendToAll("");
@@ -294,30 +274,6 @@ namespace GameNightSerialCommunications
             throw new NotImplementedException();
         }
 
-        private void btnAdd12_Click(object sender, EventArgs e)
-        {
-            addScore(1, 2);
-        }
-
-        private void btnAdd13_Click(object sender, EventArgs e)
-        {
-            addScore(1, 3);
-        }
-
-        private void btnAdd14_Click(object sender, EventArgs e)
-        {
-            addScore(1, 4);
-        }
-
-        private void btnAdd22_Click(object sender, EventArgs e)
-        {
-            addScore(2, 2);
-        }
-
-        private void btnAdd23_Click(object sender, EventArgs e)
-        {
-            addScore(2, 3);
-        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {

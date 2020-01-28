@@ -244,7 +244,7 @@
             this.btnAdd15.TabIndex = 18;
             this.btnAdd15.Text = "+5";
             this.btnAdd15.UseVisualStyleBackColor = true;
-            this.btnAdd15.Click += new System.EventHandler(this.btnAdd15_Click);
+            this.btnAdd15.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // numScore1
             // 
@@ -262,7 +262,7 @@
             this.btnAdd11.TabIndex = 17;
             this.btnAdd11.Text = "+1";
             this.btnAdd11.UseVisualStyleBackColor = true;
-            this.btnAdd11.Click += new System.EventHandler(this.btnAdd11_Click);
+            this.btnAdd11.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblTimeSinceSet1
             // 
@@ -341,7 +341,7 @@
             this.btnAdd25.TabIndex = 21;
             this.btnAdd25.Text = "+5";
             this.btnAdd25.UseVisualStyleBackColor = true;
-            this.btnAdd25.Click += new System.EventHandler(this.btnAdd25_Click);
+            this.btnAdd25.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblTimeSinceSet2
             // 
@@ -368,7 +368,7 @@
             this.btnAdd21.TabIndex = 19;
             this.btnAdd21.Text = "+1";
             this.btnAdd21.UseVisualStyleBackColor = true;
-            this.btnAdd21.Click += new System.EventHandler(this.btnAdd21_Click);
+            this.btnAdd21.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // txtTimeSinceSet2
             // 
@@ -519,7 +519,7 @@
             this.btnAdd13.TabIndex = 21;
             this.btnAdd13.Text = "+3";
             this.btnAdd13.UseVisualStyleBackColor = true;
-            this.btnAdd13.Click += new System.EventHandler(this.btnAdd13_Click);
+            this.btnAdd13.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnAdd14
             // 
@@ -529,7 +529,7 @@
             this.btnAdd14.TabIndex = 22;
             this.btnAdd14.Text = "+4";
             this.btnAdd14.UseVisualStyleBackColor = true;
-            this.btnAdd14.Click += new System.EventHandler(this.btnAdd14_Click);
+            this.btnAdd14.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnAdd12
             // 
@@ -539,7 +539,7 @@
             this.btnAdd12.TabIndex = 23;
             this.btnAdd12.Text = "+2";
             this.btnAdd12.UseVisualStyleBackColor = true;
-            this.btnAdd12.Click += new System.EventHandler(this.btnAdd12_Click);
+            this.btnAdd12.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnAdd24
             // 
@@ -559,7 +559,7 @@
             this.btnAdd23.TabIndex = 23;
             this.btnAdd23.Text = "+3";
             this.btnAdd23.UseVisualStyleBackColor = true;
-            this.btnAdd23.Click += new System.EventHandler(this.btnAdd23_Click);
+            this.btnAdd23.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnAdd22
             // 
@@ -569,7 +569,7 @@
             this.btnAdd22.TabIndex = 24;
             this.btnAdd22.Text = "+2";
             this.btnAdd22.UseVisualStyleBackColor = true;
-            this.btnAdd22.Click += new System.EventHandler(this.btnAdd22_Click);
+            this.btnAdd22.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblTeamName1
             // 
