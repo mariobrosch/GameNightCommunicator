@@ -269,5 +269,35 @@ namespace GameNightSerialCommunications
         {
             throw new NotImplementedException();
         }
+
+        private void btnAdd12_Click(object sender, EventArgs e)
+        {
+            numScore1.Value += 2;
+        }
+
+        private void btnAdd13_Click(object sender, EventArgs e)
+        {
+            numScore1.Value += 3;
+        }
+
+        private void btnAdd14_Click(object sender, EventArgs e)
+        {
+            numScore1.Value += 4;
+        }
+
+        private void btnAdd22_Click(object sender, EventArgs e)
+        {
+            numScore2.Value += 2;
+        }
+
+        private void btnAdd23_Click(object sender, EventArgs e)
+        {
+            numScore2.Value += 3;
+        }
+
+        private void btnAdd24_Click(object sender, EventArgs e)
+        {
+            numScore2.Value += 4;
+        }
     }
 }

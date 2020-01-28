@@ -73,6 +73,12 @@
             this.sfdSaveSession = new System.Windows.Forms.SaveFileDialog();
             this.btnSessionLoad = new System.Windows.Forms.Button();
             this.ofdSessionLoad = new System.Windows.Forms.OpenFileDialog();
+            this.btnAdd13 = new System.Windows.Forms.Button();
+            this.btnAdd14 = new System.Windows.Forms.Button();
+            this.btnAdd12 = new System.Windows.Forms.Button();
+            this.btnAdd24 = new System.Windows.Forms.Button();
+            this.btnAdd23 = new System.Windows.Forms.Button();
+            this.btnAdd22 = new System.Windows.Forms.Button();
             this.pnlTeam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
             this.pnlTeam2.SuspendLayout();
@@ -179,6 +185,9 @@
             // pnlTeam1
             // 
             this.pnlTeam1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam1.Controls.Add(this.btnAdd12);
+            this.pnlTeam1.Controls.Add(this.btnAdd14);
+            this.pnlTeam1.Controls.Add(this.btnAdd13);
             this.pnlTeam1.Controls.Add(this.chkFastest1);
             this.pnlTeam1.Controls.Add(this.lblScore1);
             this.pnlTeam1.Controls.Add(this.btnAdd15);
@@ -216,7 +225,7 @@
             // 
             // btnAdd15
             // 
-            this.btnAdd15.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd15.Location = new System.Drawing.Point(268, 145);
             this.btnAdd15.Name = "btnAdd15";
             this.btnAdd15.Size = new System.Drawing.Size(57, 23);
             this.btnAdd15.TabIndex = 18;
@@ -228,6 +237,7 @@
             // 
             this.numScore1.Location = new System.Drawing.Point(16, 119);
             this.numScore1.Name = "numScore1";
+            this.numScore1.ReadOnly = true;
             this.numScore1.Size = new System.Drawing.Size(120, 20);
             this.numScore1.TabIndex = 18;
             // 
@@ -269,6 +279,9 @@
             // pnlTeam2
             // 
             this.pnlTeam2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam2.Controls.Add(this.btnAdd22);
+            this.pnlTeam2.Controls.Add(this.btnAdd23);
+            this.pnlTeam2.Controls.Add(this.btnAdd24);
             this.pnlTeam2.Controls.Add(this.chkFastest2);
             this.pnlTeam2.Controls.Add(this.lblScore2);
             this.pnlTeam2.Controls.Add(this.btnAdd25);
@@ -306,7 +319,7 @@
             // 
             // btnAdd25
             // 
-            this.btnAdd25.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd25.Location = new System.Drawing.Point(268, 145);
             this.btnAdd25.Name = "btnAdd25";
             this.btnAdd25.Size = new System.Drawing.Size(57, 23);
             this.btnAdd25.TabIndex = 21;
@@ -327,6 +340,7 @@
             // 
             this.numScore2.Location = new System.Drawing.Point(16, 119);
             this.numScore2.Name = "numScore2";
+            this.numScore2.ReadOnly = true;
             this.numScore2.Size = new System.Drawing.Size(120, 20);
             this.numScore2.TabIndex = 20;
             // 
@@ -481,6 +495,66 @@
             // 
             this.ofdSessionLoad.Filter = "Game Night Session|*.gns";
             // 
+            // btnAdd13
+            // 
+            this.btnAdd13.Location = new System.Drawing.Point(142, 145);
+            this.btnAdd13.Name = "btnAdd13";
+            this.btnAdd13.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd13.TabIndex = 21;
+            this.btnAdd13.Text = "+3";
+            this.btnAdd13.UseVisualStyleBackColor = true;
+            this.btnAdd13.Click += new System.EventHandler(this.btnAdd13_Click);
+            // 
+            // btnAdd14
+            // 
+            this.btnAdd14.Location = new System.Drawing.Point(205, 145);
+            this.btnAdd14.Name = "btnAdd14";
+            this.btnAdd14.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd14.TabIndex = 22;
+            this.btnAdd14.Text = "+4";
+            this.btnAdd14.UseVisualStyleBackColor = true;
+            this.btnAdd14.Click += new System.EventHandler(this.btnAdd14_Click);
+            // 
+            // btnAdd12
+            // 
+            this.btnAdd12.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd12.Name = "btnAdd12";
+            this.btnAdd12.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd12.TabIndex = 23;
+            this.btnAdd12.Text = "+2";
+            this.btnAdd12.UseVisualStyleBackColor = true;
+            this.btnAdd12.Click += new System.EventHandler(this.btnAdd12_Click);
+            // 
+            // btnAdd24
+            // 
+            this.btnAdd24.Location = new System.Drawing.Point(205, 145);
+            this.btnAdd24.Name = "btnAdd24";
+            this.btnAdd24.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd24.TabIndex = 22;
+            this.btnAdd24.Text = "+4";
+            this.btnAdd24.UseVisualStyleBackColor = true;
+            this.btnAdd24.Click += new System.EventHandler(this.btnAdd24_Click);
+            // 
+            // btnAdd23
+            // 
+            this.btnAdd23.Location = new System.Drawing.Point(142, 145);
+            this.btnAdd23.Name = "btnAdd23";
+            this.btnAdd23.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd23.TabIndex = 23;
+            this.btnAdd23.Text = "+3";
+            this.btnAdd23.UseVisualStyleBackColor = true;
+            this.btnAdd23.Click += new System.EventHandler(this.btnAdd23_Click);
+            // 
+            // btnAdd22
+            // 
+            this.btnAdd22.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd22.Name = "btnAdd22";
+            this.btnAdd22.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd22.TabIndex = 24;
+            this.btnAdd22.Text = "+2";
+            this.btnAdd22.UseVisualStyleBackColor = true;
+            this.btnAdd22.Click += new System.EventHandler(this.btnAdd22_Click);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
@@ -563,6 +637,12 @@
         private System.Windows.Forms.SaveFileDialog sfdSaveSession;
         private System.Windows.Forms.Button btnSessionLoad;
         private System.Windows.Forms.OpenFileDialog ofdSessionLoad;
+        private System.Windows.Forms.Button btnAdd12;
+        private System.Windows.Forms.Button btnAdd14;
+        private System.Windows.Forms.Button btnAdd13;
+        private System.Windows.Forms.Button btnAdd22;
+        private System.Windows.Forms.Button btnAdd23;
+        private System.Windows.Forms.Button btnAdd24;
     }
 }
 
