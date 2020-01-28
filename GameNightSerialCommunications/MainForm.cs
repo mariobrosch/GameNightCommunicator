@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.IO.Ports;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace GameNightSerialCommunications
     {
         readonly SerialHandler sc = new SerialHandler();
         DateTime setDate;
+        readonly string sessionFileLocation = Path.Combine(Directory.GetCurrentDirectory(), "currentSession.gns");
+        readonly string defaultSaveLocation = Path.Combine(Directory.GetCurrentDirectory(), "savedSessions");
 
         public MainForm()
         {
@@ -228,6 +231,43 @@ namespace GameNightSerialCommunications
             sc.SendToAll("L:0");
             chkFastest1.Checked = false;
             chkFastest2.Checked = false;
+        }
+
+        private void btnSaveSession_Click(object sender, EventArgs e)
+        {
+            if (!File.Exists(sessionFileLocation))
+            {
+                MessageBox.Show("Geen sessie gevonden, start eerst het spel voordat je een sessie kunt opslaan");
+                return;
+            }
+            if (!Directory.Exists(defaultSaveLocation))
+            {
+                Directory.CreateDirectory(defaultSaveLocation);
+            }
+            if (sfdSaveSession.ShowDialog() == DialogResult.Yes)
+            {
+                // The data was already saved in a file, so we only have to copy it
+                File.Copy(sessionFileLocation, sfdSaveSession.FileName, true);
+            }
+        }
+
+        private void btnSessionLoad_Click(object sender, EventArgs e)
+        {
+            ofdSessionLoad.InitialDirectory = defaultSaveLocation;
+            if (!Directory.Exists(defaultSaveLocation))
+            {
+                Directory.CreateDirectory(defaultSaveLocation);
+            }
+            if (ofdSessionLoad.ShowDialog() == DialogResult.Yes)
+            {
+                File.Copy(ofdSessionLoad.FileName, sessionFileLocation, true);
+                reloadSession();
+            }
+        }
+
+        private void reloadSession()
+        {
+            throw new NotImplementedException();
         }
     }
 }

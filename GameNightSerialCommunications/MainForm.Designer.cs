@@ -69,6 +69,10 @@
             this.btnFaultAll = new System.Windows.Forms.Button();
             this.btnStartTimer = new System.Windows.Forms.Button();
             this.btnSendScores = new System.Windows.Forms.Button();
+            this.btnSaveSession = new System.Windows.Forms.Button();
+            this.sfdSaveSession = new System.Windows.Forms.SaveFileDialog();
+            this.btnSessionLoad = new System.Windows.Forms.Button();
+            this.ofdSessionLoad = new System.Windows.Forms.OpenFileDialog();
             this.pnlTeam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
             this.pnlTeam2.SuspendLayout();
@@ -430,7 +434,7 @@
             // 
             // btnStartTimer
             // 
-            this.btnStartTimer.Location = new System.Drawing.Point(12, 99);
+            this.btnStartTimer.Location = new System.Drawing.Point(12, 141);
             this.btnStartTimer.Name = "btnStartTimer";
             this.btnStartTimer.Size = new System.Drawing.Size(160, 23);
             this.btnStartTimer.TabIndex = 20;
@@ -440,7 +444,7 @@
             // 
             // btnSendScores
             // 
-            this.btnSendScores.Location = new System.Drawing.Point(178, 99);
+            this.btnSendScores.Location = new System.Drawing.Point(178, 141);
             this.btnSendScores.Name = "btnSendScores";
             this.btnSendScores.Size = new System.Drawing.Size(89, 23);
             this.btnSendScores.TabIndex = 21;
@@ -448,12 +452,43 @@
             this.btnSendScores.UseVisualStyleBackColor = true;
             this.btnSendScores.Click += new System.EventHandler(this.btnSendScores_Click);
             // 
+            // btnSaveSession
+            // 
+            this.btnSaveSession.Location = new System.Drawing.Point(612, 141);
+            this.btnSaveSession.Name = "btnSaveSession";
+            this.btnSaveSession.Size = new System.Drawing.Size(112, 23);
+            this.btnSaveSession.TabIndex = 22;
+            this.btnSaveSession.Text = "Sessie opslaan";
+            this.btnSaveSession.UseVisualStyleBackColor = true;
+            this.btnSaveSession.Click += new System.EventHandler(this.btnSaveSession_Click);
+            // 
+            // sfdSaveSession
+            // 
+            this.sfdSaveSession.DefaultExt = "gns";
+            this.sfdSaveSession.Filter = "Game Night Session|*.gns";
+            // 
+            // btnSessionLoad
+            // 
+            this.btnSessionLoad.Location = new System.Drawing.Point(494, 141);
+            this.btnSessionLoad.Name = "btnSessionLoad";
+            this.btnSessionLoad.Size = new System.Drawing.Size(112, 23);
+            this.btnSessionLoad.TabIndex = 23;
+            this.btnSessionLoad.Text = "Sessie laden";
+            this.btnSessionLoad.UseVisualStyleBackColor = true;
+            this.btnSessionLoad.Click += new System.EventHandler(this.btnSessionLoad_Click);
+            // 
+            // ofdSessionLoad
+            // 
+            this.ofdSessionLoad.Filter = "Game Night Session|*.gns";
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 450);
+            this.Controls.Add(this.btnSessionLoad);
+            this.Controls.Add(this.btnSaveSession);
             this.Controls.Add(this.btnSendScores);
             this.Controls.Add(this.btnStartTimer);
             this.Controls.Add(this.btnGoodAll);
@@ -524,6 +559,10 @@
         private System.Windows.Forms.Label lblScore2;
         private System.Windows.Forms.CheckBox chkFastest1;
         private System.Windows.Forms.CheckBox chkFastest2;
+        private System.Windows.Forms.Button btnSaveSession;
+        private System.Windows.Forms.SaveFileDialog sfdSaveSession;
+        private System.Windows.Forms.Button btnSessionLoad;
+        private System.Windows.Forms.OpenFileDialog ofdSessionLoad;
     }
 }
 
