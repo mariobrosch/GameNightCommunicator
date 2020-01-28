@@ -83,6 +83,12 @@
             this.txtTeamName1 = new System.Windows.Forms.TextBox();
             this.txtTeamName2 = new System.Windows.Forms.TextBox();
             this.lblTeamName2 = new System.Windows.Forms.Label();
+            this.txtTimeSinceSet1ms = new System.Windows.Forms.TextBox();
+            this.txtTimeSinceSet2ms = new System.Windows.Forms.TextBox();
+            this.lblStatusLabel = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblQuestionLabel = new System.Windows.Forms.Label();
+            this.lblQuestion = new System.Windows.Forms.Label();
             this.pnlTeam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
             this.pnlTeam2.SuspendLayout();
@@ -189,6 +195,7 @@
             // pnlTeam1
             // 
             this.pnlTeam1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam1.Controls.Add(this.txtTimeSinceSet1ms);
             this.pnlTeam1.Controls.Add(this.txtTeamName1);
             this.pnlTeam1.Controls.Add(this.lblTeamName1);
             this.pnlTeam1.Controls.Add(this.btnAdd12);
@@ -285,6 +292,7 @@
             // pnlTeam2
             // 
             this.pnlTeam2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam2.Controls.Add(this.txtTimeSinceSet2ms);
             this.pnlTeam2.Controls.Add(this.txtTeamName2);
             this.pnlTeam2.Controls.Add(this.lblTeamName2);
             this.pnlTeam2.Controls.Add(this.btnAdd22);
@@ -310,7 +318,7 @@
             // chkFastest2
             // 
             this.chkFastest2.AutoSize = true;
-            this.chkFastest2.Location = new System.Drawing.Point(307, 81);
+            this.chkFastest2.Location = new System.Drawing.Point(305, 78);
             this.chkFastest2.Name = "chkFastest2";
             this.chkFastest2.Size = new System.Drawing.Size(15, 14);
             this.chkFastest2.TabIndex = 21;
@@ -458,17 +466,17 @@
             // 
             this.btnStartTimer.Location = new System.Drawing.Point(12, 141);
             this.btnStartTimer.Name = "btnStartTimer";
-            this.btnStartTimer.Size = new System.Drawing.Size(160, 23);
+            this.btnStartTimer.Size = new System.Drawing.Size(93, 23);
             this.btnStartTimer.TabIndex = 20;
-            this.btnStartTimer.Text = "Start timer + antwoorden legen";
+            this.btnStartTimer.Text = "Volgende vraag";
             this.btnStartTimer.UseVisualStyleBackColor = true;
             this.btnStartTimer.Click += new System.EventHandler(this.btnStartTimer_Click);
             // 
             // btnSendScores
             // 
-            this.btnSendScores.Location = new System.Drawing.Point(178, 141);
+            this.btnSendScores.Location = new System.Drawing.Point(376, 99);
             this.btnSendScores.Name = "btnSendScores";
-            this.btnSendScores.Size = new System.Drawing.Size(89, 23);
+            this.btnSendScores.Size = new System.Drawing.Size(111, 23);
             this.btnSendScores.TabIndex = 21;
             this.btnSendScores.Text = "Verstuur scores";
             this.btnSendScores.UseVisualStyleBackColor = true;
@@ -541,7 +549,7 @@
             this.btnAdd24.TabIndex = 22;
             this.btnAdd24.Text = "+4";
             this.btnAdd24.UseVisualStyleBackColor = true;
-            this.btnAdd24.Click += new System.EventHandler(this.btnAdd24_Click);
+            this.btnAdd24.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnAdd23
             // 
@@ -599,12 +607,68 @@
             this.lblTeamName2.TabIndex = 26;
             this.lblTeamName2.Text = "Teamnaam (max 8)";
             // 
+            // txtTimeSinceSet1ms
+            // 
+            this.txtTimeSinceSet1ms.Location = new System.Drawing.Point(326, 75);
+            this.txtTimeSinceSet1ms.Name = "txtTimeSinceSet1ms";
+            this.txtTimeSinceSet1ms.Size = new System.Drawing.Size(10, 20);
+            this.txtTimeSinceSet1ms.TabIndex = 26;
+            this.txtTimeSinceSet1ms.Visible = false;
+            // 
+            // txtTimeSinceSet2ms
+            // 
+            this.txtTimeSinceSet2ms.Location = new System.Drawing.Point(326, 75);
+            this.txtTimeSinceSet2ms.Name = "txtTimeSinceSet2ms";
+            this.txtTimeSinceSet2ms.Size = new System.Drawing.Size(10, 20);
+            this.txtTimeSinceSet2ms.TabIndex = 27;
+            this.txtTimeSinceSet2ms.Visible = false;
+            // 
+            // lblStatusLabel
+            // 
+            this.lblStatusLabel.AutoSize = true;
+            this.lblStatusLabel.Location = new System.Drawing.Point(13, 451);
+            this.lblStatusLabel.Name = "lblStatusLabel";
+            this.lblStatusLabel.Size = new System.Drawing.Size(40, 13);
+            this.lblStatusLabel.TabIndex = 24;
+            this.lblStatusLabel.Text = "Status:";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(59, 451);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(10, 13);
+            this.lblStatus.TabIndex = 25;
+            this.lblStatus.Text = "-";
+            // 
+            // lblQuestionLabel
+            // 
+            this.lblQuestionLabel.AutoSize = true;
+            this.lblQuestionLabel.Location = new System.Drawing.Point(642, 451);
+            this.lblQuestionLabel.Name = "lblQuestionLabel";
+            this.lblQuestionLabel.Size = new System.Drawing.Size(41, 13);
+            this.lblQuestionLabel.TabIndex = 26;
+            this.lblQuestionLabel.Text = "Vraag: ";
+            // 
+            // lblQuestion
+            // 
+            this.lblQuestion.AutoSize = true;
+            this.lblQuestion.Location = new System.Drawing.Point(689, 451);
+            this.lblQuestion.Name = "lblQuestion";
+            this.lblQuestion.Size = new System.Drawing.Size(10, 13);
+            this.lblQuestion.TabIndex = 27;
+            this.lblQuestion.Text = "-";
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 450);
+            this.ClientSize = new System.Drawing.Size(737, 476);
+            this.Controls.Add(this.lblQuestion);
+            this.Controls.Add(this.lblQuestionLabel);
+            this.Controls.Add(this.lblStatus);
+            this.Controls.Add(this.lblStatusLabel);
             this.Controls.Add(this.btnSessionLoad);
             this.Controls.Add(this.btnSaveSession);
             this.Controls.Add(this.btnSendScores);
@@ -691,6 +755,12 @@
         private System.Windows.Forms.Label lblTeamName1;
         private System.Windows.Forms.TextBox txtTeamName2;
         private System.Windows.Forms.Label lblTeamName2;
+        private System.Windows.Forms.TextBox txtTimeSinceSet1ms;
+        private System.Windows.Forms.TextBox txtTimeSinceSet2ms;
+        private System.Windows.Forms.Label lblStatusLabel;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lblQuestionLabel;
+        private System.Windows.Forms.Label lblQuestion;
     }
 }
 

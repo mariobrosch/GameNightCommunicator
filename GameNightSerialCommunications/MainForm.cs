@@ -16,6 +16,8 @@ namespace GameNightSerialCommunications
         readonly string defaultSaveLocation = Path.Combine(Directory.GetCurrentDirectory(), "savedSessions");
         internal Session session;
         int currentQuestion = 1;
+        int scoreSetTeam1LastQuestion = 0;
+        int scoreSetTeam2LastQuestion = 0;
 
         public MainForm()
         {
@@ -31,6 +33,7 @@ namespace GameNightSerialCommunications
             var ports2 = SerialPort.GetPortNames();
             cboTeam2.DataSource = ports2;
             setDate = DateTime.Now;
+            lblQuestion.Text = currentQuestion.ToString();
         }
 
         private void btnSendAll_Click(object sender, EventArgs e)
@@ -59,6 +62,7 @@ namespace GameNightSerialCommunications
             }
             TimeSpan span = DateTime.Now - setDate;
             int ms = (int)span.TotalMilliseconds;
+            txtTimeSinceSet1.Text = ms.ToString();
             double seconds = Convert.ToDouble(ms) / 1000;
             txtTimeSinceSet1.Text = seconds.ToString() + " s.";
             if (String.IsNullOrEmpty(txtTimeSinceSet2.Text))
@@ -84,8 +88,10 @@ namespace GameNightSerialCommunications
             }
             TimeSpan span = DateTime.Now - setDate;
             int ms = (int)span.TotalMilliseconds;
+            txtTimeSinceSet2ms.Text = ms.ToString();
             double seconds = Convert.ToDouble(ms)/1000;
-            txtTimeSinceSet2.Text = seconds.ToString() + " s.";           if (String.IsNullOrEmpty(txtTimeSinceSet1.Text))
+            txtTimeSinceSet2.Text = seconds.ToString() + " s.";           
+            if (String.IsNullOrEmpty(txtTimeSinceSet1.Text))
             {
                 chkFastest2.Checked = true;
                 sc.sendMessageToTeam(serialTeam2, "L:255");
@@ -215,12 +221,12 @@ namespace GameNightSerialCommunications
 
         private void btnAdd11_Click(object sender, EventArgs e)
         {
-            addScore(2, 1);
+            addScore(1, 1);
         }
 
         private void btnAdd15_Click(object sender, EventArgs e)
         {
-            addScore(2, 5);
+            addScore(1, 5);
         }
 
         private void btnAdd21_Click(object sender, EventArgs e)
@@ -240,9 +246,15 @@ namespace GameNightSerialCommunications
             txtLastAnswerTeam2.Text = "";
             txtTimeSinceSet1.Text = "";
             txtTimeSinceSet2.Text = "";
+            txtTimeSinceSet1ms.Text = "";
+            txtTimeSinceSet2ms.Text = "";
+            scoreSetTeam1LastQuestion = 0;
+            scoreSetTeam2LastQuestion = 0;
             sc.SendToAll("L:0");
             chkFastest1.Checked = false;
             chkFastest2.Checked = false;
+            currentQuestion += 1;
+            lblQuestion.Text = currentQuestion.ToString();
         }
 
         private void btnSaveSession_Click(object sender, EventArgs e)
@@ -307,9 +319,12 @@ namespace GameNightSerialCommunications
             addScore(2, 3);
         }
 
-        private void btnAdd24_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            addScore(2, 4);
+            var button = (sender as Button);
+            int score = Convert.ToInt32(button.Text.Replace("+", ""));
+            int team = Convert.ToInt32(button.Parent.Name.Replace("pnlTeam", ""));
+            addScore(team, score);
         }
 
         private void txtTeamName1_TextChanged(object sender, EventArgs e)
@@ -334,14 +349,39 @@ namespace GameNightSerialCommunications
             };
             if (team == 1)
             {
+                if (scoreSetTeam1LastQuestion > 0)
+                {
+                    if (MessageBox.Show("Al punten gegeven voor deze vraag, punten aanpassen?", "Alweer?", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return;
+                    } else
+                    {
+                        numScore1.Value -= scoreSetTeam1LastQuestion;
+                    }
+                }
+                scoreSetTeam1LastQuestion = points;
                 numScore1.Value += points;
-                session.team1.scores.Add(score);
+                score.miliseconds = String.IsNullOrEmpty(txtTimeSinceSet1ms.Text) ? 0 : Convert.ToInt32(txtTimeSinceSet1ms.Text);
+                SessionHandler.AddScore(session, score, 1);
             }
 
             if (team == 2)
             {
+                if (scoreSetTeam2LastQuestion > 0)
+                {
+                    if( MessageBox.Show("Al punten gegeven voor deze vraag, punten aanpassen?", "Alweer?", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        numScore2.Value -= scoreSetTeam2LastQuestion;
+                    }
+                }
+                scoreSetTeam2LastQuestion = points;
                 numScore2.Value += points;
-                session.team2.scores.Add(score);
+                score.miliseconds = String.IsNullOrEmpty(txtTimeSinceSet2ms.Text) ? 0 : Convert.ToInt32(txtTimeSinceSet2ms.Text);
+                SessionHandler.AddScore(session, score, 2);
             }
             saveSession();
         }
