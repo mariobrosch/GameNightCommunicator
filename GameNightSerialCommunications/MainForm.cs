@@ -1,7 +1,8 @@
-﻿using System;
+﻿using GameNightSerialCommunications.Models;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,15 +14,18 @@ namespace GameNightSerialCommunications
         DateTime setDate;
         readonly string sessionFileLocation = Path.Combine(Directory.GetCurrentDirectory(), "currentSession.gns");
         readonly string defaultSaveLocation = Path.Combine(Directory.GetCurrentDirectory(), "savedSessions");
-        Session session;
+        internal Session session;
+        int currentQuestion = 1;
 
         public MainForm()
         {
             InitializeComponent();
 
             session = new Session();
-            session.team1 = new Models.Team();
-            session.team2 = new Models.Team();
+            session.team1 = new Team();
+            session.team2 = new Team();
+            session.team1.scores = new List<Score>();
+            session.team2.scores = new List<Score>();
             var ports = SerialPort.GetPortNames();
             cboTeam1.DataSource = ports;
             var ports2 = SerialPort.GetPortNames();
@@ -211,22 +215,22 @@ namespace GameNightSerialCommunications
 
         private void btnAdd11_Click(object sender, EventArgs e)
         {
-            numScore1.Value += 1;
+            addScore(2, 1);
         }
 
         private void btnAdd15_Click(object sender, EventArgs e)
         {
-            numScore1.Value += 5;
+            addScore(2, 5);
         }
 
         private void btnAdd21_Click(object sender, EventArgs e)
         {
-            numScore2.Value += 1;
+            addScore(2, 1);
         }
 
         private void btnAdd25_Click(object sender, EventArgs e)
         {
-            numScore2.Value += 5;
+            addScore(2, 5);
         }
 
         void resetAnswerFields()
@@ -280,42 +284,71 @@ namespace GameNightSerialCommunications
 
         private void btnAdd12_Click(object sender, EventArgs e)
         {
-            numScore1.Value += 2;
+            addScore(1, 2);
         }
 
         private void btnAdd13_Click(object sender, EventArgs e)
         {
-            numScore1.Value += 3;
+            addScore(1, 3);
         }
 
         private void btnAdd14_Click(object sender, EventArgs e)
         {
-            numScore1.Value += 4;
+            addScore(1, 4);
         }
 
         private void btnAdd22_Click(object sender, EventArgs e)
         {
-            numScore2.Value += 2;
+            addScore(2, 2);
         }
 
         private void btnAdd23_Click(object sender, EventArgs e)
         {
-            numScore2.Value += 3;
+            addScore(2, 3);
         }
 
         private void btnAdd24_Click(object sender, EventArgs e)
         {
-            numScore2.Value += 4;
+            addScore(2, 4);
         }
 
         private void txtTeamName1_TextChanged(object sender, EventArgs e)
         {
             session.team1.teamName = txtTeamName1.Text;
+            saveSession();
         }
 
         private void txtTeamName2_TextChanged(object sender, EventArgs e)
         {
+
             session.team2.teamName = txtTeamName2.Text;
+            saveSession();
+        }
+
+        private void addScore(int team, int points)
+        {
+            Score score = new Score
+            {
+                points = points,
+                question = currentQuestion
+            };
+            if (team == 1)
+            {
+                numScore1.Value += points;
+                session.team1.scores.Add(score);
+            }
+
+            if (team == 2)
+            {
+                numScore2.Value += points;
+                session.team2.scores.Add(score);
+            }
+            saveSession();
+        }
+        private void saveSession()
+        {
+            var xmlData = session.ToXml();
+            File.WriteAllText(sessionFileLocation, xmlData);
         }
     }
 }

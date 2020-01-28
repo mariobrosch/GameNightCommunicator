@@ -1,6 +1,6 @@
 ﻿namespace GameNightSerialCommunications.Models
 {
-    internal class Score
+    public class Score
     {
         public int question;
         public int points;

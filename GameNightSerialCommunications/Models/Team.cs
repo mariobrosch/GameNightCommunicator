@@ -2,7 +2,7 @@
 
 namespace GameNightSerialCommunications.Models
 {
-    internal class Team
+    public class Team
     {
         public string teamName;
         public List<Score> scores;

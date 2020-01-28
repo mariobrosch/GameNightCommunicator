@@ -2,7 +2,7 @@
 
 namespace GameNightSerialCommunications
 {
-    internal class Session
+    public class Session
     {
         public Team team1;
         public Team team2;
