@@ -74,8 +74,7 @@ namespace GameNightSerialCommunications
             TimeSpan span = DateTime.Now - setDate;
             int ms = (int)span.TotalMilliseconds;
             double seconds = Convert.ToDouble(ms)/1000;
-            txtTimeSinceSet2.Text = seconds.ToString() + " s.";
-            if (String.IsNullOrEmpty(txtTimeSinceSet1.Text))
+            txtTimeSinceSet2.Text = seconds.ToString() + " s.";           if (String.IsNullOrEmpty(txtTimeSinceSet1.Text))
             {
                 chkFastest2.Checked = true;
                 sc.sendMessageToTeam(serialTeam2, "L:255");

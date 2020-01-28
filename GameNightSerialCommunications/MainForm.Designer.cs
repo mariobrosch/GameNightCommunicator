@@ -42,8 +42,22 @@
             this.txtLastAnswerTeam1 = new System.Windows.Forms.TextBox();
             this.lblLastAnswerTeam1 = new System.Windows.Forms.Label();
             this.pnlTeam1 = new System.Windows.Forms.Panel();
+            this.chkFastest1 = new System.Windows.Forms.CheckBox();
+            this.lblScore1 = new System.Windows.Forms.Label();
+            this.btnAdd15 = new System.Windows.Forms.Button();
+            this.numScore1 = new System.Windows.Forms.NumericUpDown();
+            this.btnAdd11 = new System.Windows.Forms.Button();
+            this.lblTimeSinceSet1 = new System.Windows.Forms.Label();
+            this.txtTimeSinceSet1 = new System.Windows.Forms.TextBox();
             this.lblComPort1 = new System.Windows.Forms.Label();
             this.pnlTeam2 = new System.Windows.Forms.Panel();
+            this.chkFastest2 = new System.Windows.Forms.CheckBox();
+            this.lblScore2 = new System.Windows.Forms.Label();
+            this.btnAdd25 = new System.Windows.Forms.Button();
+            this.lblTimeSinceSet2 = new System.Windows.Forms.Label();
+            this.numScore2 = new System.Windows.Forms.NumericUpDown();
+            this.btnAdd21 = new System.Windows.Forms.Button();
+            this.txtTimeSinceSet2 = new System.Windows.Forms.TextBox();
             this.lblComPort2 = new System.Windows.Forms.Label();
             this.txtLastAnswerTeam2 = new System.Windows.Forms.TextBox();
             this.lblLastAnswerTeam2 = new System.Windows.Forms.Label();
@@ -53,26 +67,11 @@
             this.btnFault2 = new System.Windows.Forms.Button();
             this.btnGoodAll = new System.Windows.Forms.Button();
             this.btnFaultAll = new System.Windows.Forms.Button();
-            this.txtTimeSinceSet1 = new System.Windows.Forms.TextBox();
-            this.txtTimeSinceSet2 = new System.Windows.Forms.TextBox();
-            this.lblTimeSinceSet1 = new System.Windows.Forms.Label();
-            this.lblTimeSinceSet2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnStartTimer = new System.Windows.Forms.Button();
             this.btnSendScores = new System.Windows.Forms.Button();
-            this.btnAdd11 = new System.Windows.Forms.Button();
-            this.btnAdd15 = new System.Windows.Forms.Button();
-            this.numScore1 = new System.Windows.Forms.NumericUpDown();
-            this.btnAdd25 = new System.Windows.Forms.Button();
-            this.numScore2 = new System.Windows.Forms.NumericUpDown();
-            this.btnAdd21 = new System.Windows.Forms.Button();
-            this.lblScore1 = new System.Windows.Forms.Label();
-            this.lblScore2 = new System.Windows.Forms.Label();
-            this.chkFastest1 = new System.Windows.Forms.CheckBox();
-            this.chkFastest2 = new System.Windows.Forms.CheckBox();
             this.pnlTeam1.SuspendLayout();
-            this.pnlTeam2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
+            this.pnlTeam2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,6 +192,67 @@
             this.pnlTeam1.Size = new System.Drawing.Size(343, 268);
             this.pnlTeam1.TabIndex = 13;
             // 
+            // chkFastest1
+            // 
+            this.chkFastest1.AutoSize = true;
+            this.chkFastest1.Location = new System.Drawing.Point(307, 78);
+            this.chkFastest1.Name = "chkFastest1";
+            this.chkFastest1.Size = new System.Drawing.Size(15, 14);
+            this.chkFastest1.TabIndex = 20;
+            this.chkFastest1.UseVisualStyleBackColor = true;
+            // 
+            // lblScore1
+            // 
+            this.lblScore1.AutoSize = true;
+            this.lblScore1.Location = new System.Drawing.Point(13, 103);
+            this.lblScore1.Name = "lblScore1";
+            this.lblScore1.Size = new System.Drawing.Size(35, 13);
+            this.lblScore1.TabIndex = 19;
+            this.lblScore1.Text = "Score";
+            // 
+            // btnAdd15
+            // 
+            this.btnAdd15.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd15.Name = "btnAdd15";
+            this.btnAdd15.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd15.TabIndex = 18;
+            this.btnAdd15.Text = "+5";
+            this.btnAdd15.UseVisualStyleBackColor = true;
+            this.btnAdd15.Click += new System.EventHandler(this.btnAdd15_Click);
+            // 
+            // numScore1
+            // 
+            this.numScore1.Location = new System.Drawing.Point(16, 119);
+            this.numScore1.Name = "numScore1";
+            this.numScore1.Size = new System.Drawing.Size(120, 20);
+            this.numScore1.TabIndex = 18;
+            // 
+            // btnAdd11
+            // 
+            this.btnAdd11.Location = new System.Drawing.Point(16, 145);
+            this.btnAdd11.Name = "btnAdd11";
+            this.btnAdd11.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd11.TabIndex = 17;
+            this.btnAdd11.Text = "+1";
+            this.btnAdd11.UseVisualStyleBackColor = true;
+            this.btnAdd11.Click += new System.EventHandler(this.btnAdd11_Click);
+            // 
+            // lblTimeSinceSet1
+            // 
+            this.lblTimeSinceSet1.AutoSize = true;
+            this.lblTimeSinceSet1.Location = new System.Drawing.Point(16, 56);
+            this.lblTimeSinceSet1.Name = "lblTimeSinceSet1";
+            this.lblTimeSinceSet1.Size = new System.Drawing.Size(195, 13);
+            this.lblTimeSinceSet1.TabIndex = 16;
+            this.lblTimeSinceSet1.Text = "Tijd sinds start knop en eerste antwoord";
+            // 
+            // txtTimeSinceSet1
+            // 
+            this.txtTimeSinceSet1.Location = new System.Drawing.Point(16, 75);
+            this.txtTimeSinceSet1.Name = "txtTimeSinceSet1";
+            this.txtTimeSinceSet1.Size = new System.Drawing.Size(285, 20);
+            this.txtTimeSinceSet1.TabIndex = 15;
+            // 
             // lblComPort1
             // 
             this.lblComPort1.AutoSize = true;
@@ -221,6 +281,67 @@
             this.pnlTeam2.Name = "pnlTeam2";
             this.pnlTeam2.Size = new System.Drawing.Size(343, 268);
             this.pnlTeam2.TabIndex = 14;
+            // 
+            // chkFastest2
+            // 
+            this.chkFastest2.AutoSize = true;
+            this.chkFastest2.Location = new System.Drawing.Point(307, 81);
+            this.chkFastest2.Name = "chkFastest2";
+            this.chkFastest2.Size = new System.Drawing.Size(15, 14);
+            this.chkFastest2.TabIndex = 21;
+            this.chkFastest2.UseVisualStyleBackColor = true;
+            // 
+            // lblScore2
+            // 
+            this.lblScore2.AutoSize = true;
+            this.lblScore2.Location = new System.Drawing.Point(13, 103);
+            this.lblScore2.Name = "lblScore2";
+            this.lblScore2.Size = new System.Drawing.Size(35, 13);
+            this.lblScore2.TabIndex = 20;
+            this.lblScore2.Text = "Score";
+            // 
+            // btnAdd25
+            // 
+            this.btnAdd25.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd25.Name = "btnAdd25";
+            this.btnAdd25.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd25.TabIndex = 21;
+            this.btnAdd25.Text = "+5";
+            this.btnAdd25.UseVisualStyleBackColor = true;
+            this.btnAdd25.Click += new System.EventHandler(this.btnAdd25_Click);
+            // 
+            // lblTimeSinceSet2
+            // 
+            this.lblTimeSinceSet2.AutoSize = true;
+            this.lblTimeSinceSet2.Location = new System.Drawing.Point(13, 56);
+            this.lblTimeSinceSet2.Name = "lblTimeSinceSet2";
+            this.lblTimeSinceSet2.Size = new System.Drawing.Size(195, 13);
+            this.lblTimeSinceSet2.TabIndex = 17;
+            this.lblTimeSinceSet2.Text = "Tijd sinds start knop en eerste antwoord";
+            // 
+            // numScore2
+            // 
+            this.numScore2.Location = new System.Drawing.Point(16, 119);
+            this.numScore2.Name = "numScore2";
+            this.numScore2.Size = new System.Drawing.Size(120, 20);
+            this.numScore2.TabIndex = 20;
+            // 
+            // btnAdd21
+            // 
+            this.btnAdd21.Location = new System.Drawing.Point(16, 145);
+            this.btnAdd21.Name = "btnAdd21";
+            this.btnAdd21.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd21.TabIndex = 19;
+            this.btnAdd21.Text = "+1";
+            this.btnAdd21.UseVisualStyleBackColor = true;
+            this.btnAdd21.Click += new System.EventHandler(this.btnAdd21_Click);
+            // 
+            // txtTimeSinceSet2
+            // 
+            this.txtTimeSinceSet2.Location = new System.Drawing.Point(16, 75);
+            this.txtTimeSinceSet2.Name = "txtTimeSinceSet2";
+            this.txtTimeSinceSet2.Size = new System.Drawing.Size(285, 20);
+            this.txtTimeSinceSet2.TabIndex = 16;
             // 
             // lblComPort2
             // 
@@ -307,47 +428,6 @@
             this.btnFaultAll.UseVisualStyleBackColor = true;
             this.btnFaultAll.Click += new System.EventHandler(this.btnFaultAll_Click);
             // 
-            // txtTimeSinceSet1
-            // 
-            this.txtTimeSinceSet1.Location = new System.Drawing.Point(16, 75);
-            this.txtTimeSinceSet1.Name = "txtTimeSinceSet1";
-            this.txtTimeSinceSet1.Size = new System.Drawing.Size(285, 20);
-            this.txtTimeSinceSet1.TabIndex = 15;
-            // 
-            // txtTimeSinceSet2
-            // 
-            this.txtTimeSinceSet2.Location = new System.Drawing.Point(16, 75);
-            this.txtTimeSinceSet2.Name = "txtTimeSinceSet2";
-            this.txtTimeSinceSet2.Size = new System.Drawing.Size(285, 20);
-            this.txtTimeSinceSet2.TabIndex = 16;
-            // 
-            // lblTimeSinceSet1
-            // 
-            this.lblTimeSinceSet1.AutoSize = true;
-            this.lblTimeSinceSet1.Location = new System.Drawing.Point(16, 56);
-            this.lblTimeSinceSet1.Name = "lblTimeSinceSet1";
-            this.lblTimeSinceSet1.Size = new System.Drawing.Size(195, 13);
-            this.lblTimeSinceSet1.TabIndex = 16;
-            this.lblTimeSinceSet1.Text = "Tijd sinds start knop en eerste antwoord";
-            // 
-            // lblTimeSinceSet2
-            // 
-            this.lblTimeSinceSet2.AutoSize = true;
-            this.lblTimeSinceSet2.Location = new System.Drawing.Point(13, 56);
-            this.lblTimeSinceSet2.Name = "lblTimeSinceSet2";
-            this.lblTimeSinceSet2.Size = new System.Drawing.Size(195, 13);
-            this.lblTimeSinceSet2.TabIndex = 17;
-            this.lblTimeSinceSet2.Text = "Tijd sinds start knop en eerste antwoord";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(650, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // btnStartTimer
             // 
             this.btnStartTimer.Location = new System.Drawing.Point(12, 99);
@@ -368,96 +448,6 @@
             this.btnSendScores.UseVisualStyleBackColor = true;
             this.btnSendScores.Click += new System.EventHandler(this.btnSendScores_Click);
             // 
-            // btnAdd11
-            // 
-            this.btnAdd11.Location = new System.Drawing.Point(16, 145);
-            this.btnAdd11.Name = "btnAdd11";
-            this.btnAdd11.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd11.TabIndex = 17;
-            this.btnAdd11.Text = "+1";
-            this.btnAdd11.UseVisualStyleBackColor = true;
-            this.btnAdd11.Click += new System.EventHandler(this.btnAdd11_Click);
-            // 
-            // btnAdd15
-            // 
-            this.btnAdd15.Location = new System.Drawing.Point(79, 145);
-            this.btnAdd15.Name = "btnAdd15";
-            this.btnAdd15.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd15.TabIndex = 18;
-            this.btnAdd15.Text = "+5";
-            this.btnAdd15.UseVisualStyleBackColor = true;
-            this.btnAdd15.Click += new System.EventHandler(this.btnAdd15_Click);
-            // 
-            // numScore1
-            // 
-            this.numScore1.Location = new System.Drawing.Point(16, 119);
-            this.numScore1.Name = "numScore1";
-            this.numScore1.Size = new System.Drawing.Size(120, 20);
-            this.numScore1.TabIndex = 18;
-            // 
-            // btnAdd25
-            // 
-            this.btnAdd25.Location = new System.Drawing.Point(79, 145);
-            this.btnAdd25.Name = "btnAdd25";
-            this.btnAdd25.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd25.TabIndex = 21;
-            this.btnAdd25.Text = "+5";
-            this.btnAdd25.UseVisualStyleBackColor = true;
-            this.btnAdd25.Click += new System.EventHandler(this.btnAdd25_Click);
-            // 
-            // numScore2
-            // 
-            this.numScore2.Location = new System.Drawing.Point(16, 119);
-            this.numScore2.Name = "numScore2";
-            this.numScore2.Size = new System.Drawing.Size(120, 20);
-            this.numScore2.TabIndex = 20;
-            // 
-            // btnAdd21
-            // 
-            this.btnAdd21.Location = new System.Drawing.Point(16, 145);
-            this.btnAdd21.Name = "btnAdd21";
-            this.btnAdd21.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd21.TabIndex = 19;
-            this.btnAdd21.Text = "+1";
-            this.btnAdd21.UseVisualStyleBackColor = true;
-            this.btnAdd21.Click += new System.EventHandler(this.btnAdd21_Click);
-            // 
-            // lblScore1
-            // 
-            this.lblScore1.AutoSize = true;
-            this.lblScore1.Location = new System.Drawing.Point(13, 103);
-            this.lblScore1.Name = "lblScore1";
-            this.lblScore1.Size = new System.Drawing.Size(35, 13);
-            this.lblScore1.TabIndex = 19;
-            this.lblScore1.Text = "Score";
-            // 
-            // lblScore2
-            // 
-            this.lblScore2.AutoSize = true;
-            this.lblScore2.Location = new System.Drawing.Point(13, 103);
-            this.lblScore2.Name = "lblScore2";
-            this.lblScore2.Size = new System.Drawing.Size(35, 13);
-            this.lblScore2.TabIndex = 20;
-            this.lblScore2.Text = "Score";
-            // 
-            // chkFastest1
-            // 
-            this.chkFastest1.AutoSize = true;
-            this.chkFastest1.Location = new System.Drawing.Point(307, 78);
-            this.chkFastest1.Name = "chkFastest1";
-            this.chkFastest1.Size = new System.Drawing.Size(15, 14);
-            this.chkFastest1.TabIndex = 20;
-            this.chkFastest1.UseVisualStyleBackColor = true;
-            // 
-            // chkFastest2
-            // 
-            this.chkFastest2.AutoSize = true;
-            this.chkFastest2.Location = new System.Drawing.Point(307, 81);
-            this.chkFastest2.Name = "chkFastest2";
-            this.chkFastest2.Size = new System.Drawing.Size(15, 14);
-            this.chkFastest2.TabIndex = 21;
-            this.chkFastest2.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
@@ -466,7 +456,6 @@
             this.ClientSize = new System.Drawing.Size(737, 450);
             this.Controls.Add(this.btnSendScores);
             this.Controls.Add(this.btnStartTimer);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnGoodAll);
             this.Controls.Add(this.btnFaultAll);
             this.Controls.Add(this.btnGood2);
@@ -484,9 +473,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
             this.pnlTeam1.ResumeLayout(false);
             this.pnlTeam1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numScore1)).EndInit();
             this.pnlTeam2.ResumeLayout(false);
             this.pnlTeam2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numScore1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numScore2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -523,7 +512,6 @@
         private System.Windows.Forms.TextBox txtTimeSinceSet1;
         private System.Windows.Forms.Label lblTimeSinceSet2;
         private System.Windows.Forms.TextBox txtTimeSinceSet2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnStartTimer;
         private System.Windows.Forms.Button btnSendScores;
         private System.Windows.Forms.Button btnAdd15;
