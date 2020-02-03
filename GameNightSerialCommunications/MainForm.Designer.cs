@@ -42,6 +42,12 @@
             this.txtLastAnswerTeam1 = new System.Windows.Forms.TextBox();
             this.lblLastAnswerTeam1 = new System.Windows.Forms.Label();
             this.pnlTeam1 = new System.Windows.Forms.Panel();
+            this.txtTimeSinceSet1ms = new System.Windows.Forms.TextBox();
+            this.txtTeamName1 = new System.Windows.Forms.TextBox();
+            this.lblTeamName1 = new System.Windows.Forms.Label();
+            this.btnAdd12 = new System.Windows.Forms.Button();
+            this.btnAdd14 = new System.Windows.Forms.Button();
+            this.btnAdd13 = new System.Windows.Forms.Button();
             this.chkFastest1 = new System.Windows.Forms.CheckBox();
             this.lblScore1 = new System.Windows.Forms.Label();
             this.btnAdd15 = new System.Windows.Forms.Button();
@@ -51,6 +57,12 @@
             this.txtTimeSinceSet1 = new System.Windows.Forms.TextBox();
             this.lblComPort1 = new System.Windows.Forms.Label();
             this.pnlTeam2 = new System.Windows.Forms.Panel();
+            this.txtTimeSinceSet2ms = new System.Windows.Forms.TextBox();
+            this.txtTeamName2 = new System.Windows.Forms.TextBox();
+            this.lblTeamName2 = new System.Windows.Forms.Label();
+            this.btnAdd22 = new System.Windows.Forms.Button();
+            this.btnAdd23 = new System.Windows.Forms.Button();
+            this.btnAdd24 = new System.Windows.Forms.Button();
             this.chkFastest2 = new System.Windows.Forms.CheckBox();
             this.lblScore2 = new System.Windows.Forms.Label();
             this.btnAdd25 = new System.Windows.Forms.Button();
@@ -73,22 +85,11 @@
             this.sfdSaveSession = new System.Windows.Forms.SaveFileDialog();
             this.btnSessionLoad = new System.Windows.Forms.Button();
             this.ofdSessionLoad = new System.Windows.Forms.OpenFileDialog();
-            this.btnAdd13 = new System.Windows.Forms.Button();
-            this.btnAdd14 = new System.Windows.Forms.Button();
-            this.btnAdd12 = new System.Windows.Forms.Button();
-            this.btnAdd24 = new System.Windows.Forms.Button();
-            this.btnAdd23 = new System.Windows.Forms.Button();
-            this.btnAdd22 = new System.Windows.Forms.Button();
-            this.lblTeamName1 = new System.Windows.Forms.Label();
-            this.txtTeamName1 = new System.Windows.Forms.TextBox();
-            this.txtTeamName2 = new System.Windows.Forms.TextBox();
-            this.lblTeamName2 = new System.Windows.Forms.Label();
-            this.txtTimeSinceSet1ms = new System.Windows.Forms.TextBox();
-            this.txtTimeSinceSet2ms = new System.Windows.Forms.TextBox();
             this.lblStatusLabel = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblQuestionLabel = new System.Windows.Forms.Label();
             this.lblQuestion = new System.Windows.Forms.Label();
+            this.chkFastest = new System.Windows.Forms.CheckBox();
             this.pnlTeam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
             this.pnlTeam2.SuspendLayout();
@@ -218,6 +219,62 @@
             this.pnlTeam1.Size = new System.Drawing.Size(343, 268);
             this.pnlTeam1.TabIndex = 13;
             // 
+            // txtTimeSinceSet1ms
+            // 
+            this.txtTimeSinceSet1ms.Location = new System.Drawing.Point(326, 75);
+            this.txtTimeSinceSet1ms.Name = "txtTimeSinceSet1ms";
+            this.txtTimeSinceSet1ms.Size = new System.Drawing.Size(10, 20);
+            this.txtTimeSinceSet1ms.TabIndex = 26;
+            this.txtTimeSinceSet1ms.Visible = false;
+            // 
+            // txtTeamName1
+            // 
+            this.txtTeamName1.Location = new System.Drawing.Point(116, 210);
+            this.txtTeamName1.MaxLength = 8;
+            this.txtTeamName1.Name = "txtTeamName1";
+            this.txtTeamName1.Size = new System.Drawing.Size(121, 20);
+            this.txtTeamName1.TabIndex = 25;
+            this.txtTeamName1.TextChanged += new System.EventHandler(this.txtTeamName_TextChanged);
+            // 
+            // lblTeamName1
+            // 
+            this.lblTeamName1.AutoSize = true;
+            this.lblTeamName1.Location = new System.Drawing.Point(13, 213);
+            this.lblTeamName1.Name = "lblTeamName1";
+            this.lblTeamName1.Size = new System.Drawing.Size(97, 13);
+            this.lblTeamName1.TabIndex = 24;
+            this.lblTeamName1.Text = "Teamnaam (max 8)";
+            // 
+            // btnAdd12
+            // 
+            this.btnAdd12.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd12.Name = "btnAdd12";
+            this.btnAdd12.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd12.TabIndex = 23;
+            this.btnAdd12.Text = "+2";
+            this.btnAdd12.UseVisualStyleBackColor = true;
+            this.btnAdd12.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnAdd14
+            // 
+            this.btnAdd14.Location = new System.Drawing.Point(205, 145);
+            this.btnAdd14.Name = "btnAdd14";
+            this.btnAdd14.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd14.TabIndex = 22;
+            this.btnAdd14.Text = "+4";
+            this.btnAdd14.UseVisualStyleBackColor = true;
+            this.btnAdd14.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnAdd13
+            // 
+            this.btnAdd13.Location = new System.Drawing.Point(142, 145);
+            this.btnAdd13.Name = "btnAdd13";
+            this.btnAdd13.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd13.TabIndex = 21;
+            this.btnAdd13.Text = "+3";
+            this.btnAdd13.UseVisualStyleBackColor = true;
+            this.btnAdd13.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // chkFastest1
             // 
             this.chkFastest1.AutoSize = true;
@@ -314,6 +371,62 @@
             this.pnlTeam2.Name = "pnlTeam2";
             this.pnlTeam2.Size = new System.Drawing.Size(343, 268);
             this.pnlTeam2.TabIndex = 14;
+            // 
+            // txtTimeSinceSet2ms
+            // 
+            this.txtTimeSinceSet2ms.Location = new System.Drawing.Point(326, 75);
+            this.txtTimeSinceSet2ms.Name = "txtTimeSinceSet2ms";
+            this.txtTimeSinceSet2ms.Size = new System.Drawing.Size(10, 20);
+            this.txtTimeSinceSet2ms.TabIndex = 27;
+            this.txtTimeSinceSet2ms.Visible = false;
+            // 
+            // txtTeamName2
+            // 
+            this.txtTeamName2.Location = new System.Drawing.Point(111, 209);
+            this.txtTeamName2.MaxLength = 8;
+            this.txtTeamName2.Name = "txtTeamName2";
+            this.txtTeamName2.Size = new System.Drawing.Size(121, 20);
+            this.txtTeamName2.TabIndex = 27;
+            this.txtTeamName2.TextChanged += new System.EventHandler(this.txtTeamName_TextChanged);
+            // 
+            // lblTeamName2
+            // 
+            this.lblTeamName2.AutoSize = true;
+            this.lblTeamName2.Location = new System.Drawing.Point(13, 213);
+            this.lblTeamName2.Name = "lblTeamName2";
+            this.lblTeamName2.Size = new System.Drawing.Size(97, 13);
+            this.lblTeamName2.TabIndex = 26;
+            this.lblTeamName2.Text = "Teamnaam (max 8)";
+            // 
+            // btnAdd22
+            // 
+            this.btnAdd22.Location = new System.Drawing.Point(79, 145);
+            this.btnAdd22.Name = "btnAdd22";
+            this.btnAdd22.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd22.TabIndex = 24;
+            this.btnAdd22.Text = "+2";
+            this.btnAdd22.UseVisualStyleBackColor = true;
+            this.btnAdd22.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnAdd23
+            // 
+            this.btnAdd23.Location = new System.Drawing.Point(142, 145);
+            this.btnAdd23.Name = "btnAdd23";
+            this.btnAdd23.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd23.TabIndex = 23;
+            this.btnAdd23.Text = "+3";
+            this.btnAdd23.UseVisualStyleBackColor = true;
+            this.btnAdd23.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnAdd24
+            // 
+            this.btnAdd24.Location = new System.Drawing.Point(205, 145);
+            this.btnAdd24.Name = "btnAdd24";
+            this.btnAdd24.Size = new System.Drawing.Size(57, 23);
+            this.btnAdd24.TabIndex = 22;
+            this.btnAdd24.Text = "+4";
+            this.btnAdd24.UseVisualStyleBackColor = true;
+            this.btnAdd24.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // chkFastest2
             // 
@@ -511,118 +624,6 @@
             // 
             this.ofdSessionLoad.Filter = "Game Night Session|*.gns";
             // 
-            // btnAdd13
-            // 
-            this.btnAdd13.Location = new System.Drawing.Point(142, 145);
-            this.btnAdd13.Name = "btnAdd13";
-            this.btnAdd13.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd13.TabIndex = 21;
-            this.btnAdd13.Text = "+3";
-            this.btnAdd13.UseVisualStyleBackColor = true;
-            this.btnAdd13.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnAdd14
-            // 
-            this.btnAdd14.Location = new System.Drawing.Point(205, 145);
-            this.btnAdd14.Name = "btnAdd14";
-            this.btnAdd14.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd14.TabIndex = 22;
-            this.btnAdd14.Text = "+4";
-            this.btnAdd14.UseVisualStyleBackColor = true;
-            this.btnAdd14.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnAdd12
-            // 
-            this.btnAdd12.Location = new System.Drawing.Point(79, 145);
-            this.btnAdd12.Name = "btnAdd12";
-            this.btnAdd12.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd12.TabIndex = 23;
-            this.btnAdd12.Text = "+2";
-            this.btnAdd12.UseVisualStyleBackColor = true;
-            this.btnAdd12.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnAdd24
-            // 
-            this.btnAdd24.Location = new System.Drawing.Point(205, 145);
-            this.btnAdd24.Name = "btnAdd24";
-            this.btnAdd24.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd24.TabIndex = 22;
-            this.btnAdd24.Text = "+4";
-            this.btnAdd24.UseVisualStyleBackColor = true;
-            this.btnAdd24.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnAdd23
-            // 
-            this.btnAdd23.Location = new System.Drawing.Point(142, 145);
-            this.btnAdd23.Name = "btnAdd23";
-            this.btnAdd23.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd23.TabIndex = 23;
-            this.btnAdd23.Text = "+3";
-            this.btnAdd23.UseVisualStyleBackColor = true;
-            this.btnAdd23.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnAdd22
-            // 
-            this.btnAdd22.Location = new System.Drawing.Point(79, 145);
-            this.btnAdd22.Name = "btnAdd22";
-            this.btnAdd22.Size = new System.Drawing.Size(57, 23);
-            this.btnAdd22.TabIndex = 24;
-            this.btnAdd22.Text = "+2";
-            this.btnAdd22.UseVisualStyleBackColor = true;
-            this.btnAdd22.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // lblTeamName1
-            // 
-            this.lblTeamName1.AutoSize = true;
-            this.lblTeamName1.Location = new System.Drawing.Point(13, 213);
-            this.lblTeamName1.Name = "lblTeamName1";
-            this.lblTeamName1.Size = new System.Drawing.Size(97, 13);
-            this.lblTeamName1.TabIndex = 24;
-            this.lblTeamName1.Text = "Teamnaam (max 8)";
-            // 
-            // txtTeamName1
-            // 
-            this.txtTeamName1.Location = new System.Drawing.Point(116, 210);
-            this.txtTeamName1.MaxLength = 8;
-            this.txtTeamName1.Name = "txtTeamName1";
-            this.txtTeamName1.Size = new System.Drawing.Size(121, 20);
-            this.txtTeamName1.TabIndex = 25;
-            this.txtTeamName1.TextChanged += new System.EventHandler(this.txtTeamName_TextChanged);
-            // 
-            // txtTeamName2
-            // 
-            this.txtTeamName2.Location = new System.Drawing.Point(111, 209);
-            this.txtTeamName2.MaxLength = 8;
-            this.txtTeamName2.Name = "txtTeamName2";
-            this.txtTeamName2.Size = new System.Drawing.Size(121, 20);
-            this.txtTeamName2.TabIndex = 27;
-            this.txtTeamName2.TextChanged += new System.EventHandler(this.txtTeamName_TextChanged);
-            // 
-            // lblTeamName2
-            // 
-            this.lblTeamName2.AutoSize = true;
-            this.lblTeamName2.Location = new System.Drawing.Point(13, 213);
-            this.lblTeamName2.Name = "lblTeamName2";
-            this.lblTeamName2.Size = new System.Drawing.Size(97, 13);
-            this.lblTeamName2.TabIndex = 26;
-            this.lblTeamName2.Text = "Teamnaam (max 8)";
-            // 
-            // txtTimeSinceSet1ms
-            // 
-            this.txtTimeSinceSet1ms.Location = new System.Drawing.Point(326, 75);
-            this.txtTimeSinceSet1ms.Name = "txtTimeSinceSet1ms";
-            this.txtTimeSinceSet1ms.Size = new System.Drawing.Size(10, 20);
-            this.txtTimeSinceSet1ms.TabIndex = 26;
-            this.txtTimeSinceSet1ms.Visible = false;
-            // 
-            // txtTimeSinceSet2ms
-            // 
-            this.txtTimeSinceSet2ms.Location = new System.Drawing.Point(326, 75);
-            this.txtTimeSinceSet2ms.Name = "txtTimeSinceSet2ms";
-            this.txtTimeSinceSet2ms.Size = new System.Drawing.Size(10, 20);
-            this.txtTimeSinceSet2ms.TabIndex = 27;
-            this.txtTimeSinceSet2ms.Visible = false;
-            // 
             // lblStatusLabel
             // 
             this.lblStatusLabel.AutoSize = true;
@@ -659,12 +660,23 @@
             this.lblQuestion.TabIndex = 27;
             this.lblQuestion.Text = "-";
             // 
+            // chkFastest
+            // 
+            this.chkFastest.AutoSize = true;
+            this.chkFastest.Location = new System.Drawing.Point(111, 145);
+            this.chkFastest.Name = "chkFastest";
+            this.chkFastest.Size = new System.Drawing.Size(92, 17);
+            this.chkFastest.TabIndex = 28;
+            this.chkFastest.Text = "Report fastest";
+            this.chkFastest.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 476);
+            this.Controls.Add(this.chkFastest);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.lblQuestionLabel);
             this.Controls.Add(this.lblStatus);
@@ -761,6 +773,7 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label lblQuestionLabel;
         private System.Windows.Forms.Label lblQuestion;
+        private System.Windows.Forms.CheckBox chkFastest;
     }
 }
 

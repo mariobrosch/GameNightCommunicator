@@ -30,7 +30,6 @@ The application has some functionality to communicate through the COM port. The 
 * Total answer time calculation
 * Total of fastest answers
 * Texts into resource file to support multiple languages and set language per team
-* Refactor the code
 * Write data into a sql database for the simple website
-* Beautify the simpel php website for showing scoring of teams
-* I go to next question, no scoring sheet should be added with a specific attribute for the time
+* Beautify the simple php website for showing scoring of teams
+* If I go to next question, no scoring sheet should be added with a specific attribute for the time

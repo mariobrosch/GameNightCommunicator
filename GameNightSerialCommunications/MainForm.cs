@@ -311,10 +311,23 @@ namespace GameNightSerialCommunications
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            bool reportFastest = chkFastest.Checked;
             var button = (sender as Button);
             int score = Convert.ToInt32(button.Text.Replace("+", ""));
             int team = Convert.ToInt32(button.Parent.Name.Replace("pnlTeam", ""));
-            addScore(team, score);
+            bool valueToReportForFastestThisQuestion = false;
+            if (reportFastest)
+            {
+                if (team == 1)
+                {
+                    valueToReportForFastestThisQuestion = chkFastest1.Checked;
+                } else
+                {
+                    valueToReportForFastestThisQuestion = chkFastest2.Checked;
+                }
+            }
+
+            addScore(team, score, valueToReportForFastestThisQuestion);
         }
 
         private void saveTeamName(int team, string text)
@@ -339,12 +352,13 @@ namespace GameNightSerialCommunications
             saveSession();
         }
 
-        private void addScore(int team, int points)
+        private void addScore(int team, int points, bool fastest)
         {
             Score score = new Score
             {
                 points = points,
-                question = currentQuestion
+                question = currentQuestion,
+                fastest = (fastest ? 1 : 0)
             };
             if (team == 1)
             {
