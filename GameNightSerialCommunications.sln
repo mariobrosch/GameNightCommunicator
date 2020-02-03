@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{A0786B88-2ADB-4C21-ABE8-AA2D79766269}") = "GameNightScoreboard", "GameNightScoreboard\GameNightScoreboard.phpproj", "{4D9780E0-B317-455B-AE4B-9EA3A6187423}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{5C56010D-848F-437A-A782-4F8F3DAE6D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C56010D-848F-437A-A782-4F8F3DAE6D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C56010D-848F-437A-A782-4F8F3DAE6D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D9780E0-B317-455B-AE4B-9EA3A6187423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D9780E0-B317-455B-AE4B-9EA3A6187423}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
