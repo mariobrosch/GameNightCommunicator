@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -243,8 +244,21 @@ namespace GameNightSerialCommunications
 
         private void btnStartTimer_Click(object sender, EventArgs e)
         {
+            validateScoringRecords();
             resetAnswerFields();
             setDate = DateTime.Now;
+        }
+
+        void validateScoringRecords()
+        {
+            if (session.team1.scores.FirstOrDefault(x => x.question == currentQuestion) == null)
+            {
+                addScore(1, 0, false);
+            }
+            if (session.team2.scores.FirstOrDefault(x=> x.question == currentQuestion) == null)
+            {
+                addScore(2, 0, false);
+            }
         }
 
         void resetAnswerFields()
