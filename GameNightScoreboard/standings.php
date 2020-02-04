@@ -37,8 +37,8 @@
 				$temp_miliseconds += $row[1];
 				$temp_fastest += $row[3];
 			}
-			$points = $temp_points;
-			$fastest = $temp_fastest;
+			$points = $points.','.$temp_points;
+			$fastest = $fastest.','.$temp_fastest;
 			$miliseconds = $miliseconds.",".$temp_miliseconds;
 			$question = $question.",".$temp_question;
 		}
@@ -57,7 +57,6 @@
 	mysqli_query($dbhandle, "CREATE TABLE tbl_tmp".$random." (name char(25),miliseconds decimal(10,2), points decimal(3,1), questions int, fastest int, PRIMARY KEY (name))");
 	for ($counter = 1; $counter <= $num_teams; $counter +=1) {
 		$teamid =	$team[$counter - 1];
-		$sql_name = mysqli_query($dbhandle, "SELECT name FROM team WHERE id=".$teamid." ");
 		$tmp_query= "INSERT INTO tbl_tmp".$random." (name, miliseconds, points, questions, fastest) VALUES ('".$team[$counter -1]."', '".$miliseconds[$counter -1]."', '".$points[$counter - 1]."', '".$question[$counter - 1]."', '".$fastest[$counter-1]."' )";
 		mysqli_query ($dbhandle, $tmp_query);
 	}
