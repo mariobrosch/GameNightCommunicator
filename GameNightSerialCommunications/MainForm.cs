@@ -76,7 +76,7 @@ namespace GameNightSerialCommunications
                 {
                     pbLoader.BringToFront();
                     pbLoader.Visible = true;
-                    
+
                     Cursor = Cursors.WaitCursor;
                 });
             }
@@ -272,21 +272,17 @@ namespace GameNightSerialCommunications
 
         private void btnStartTimer_Click(object sender, EventArgs e)
         {
-            validateScoringRecords();
+            writeScoringRecords();
             resetAnswerFields();
             setDate = DateTime.Now;
         }
 
-        void validateScoringRecords()
+        void writeScoringRecords()
         {
-            if (session.team1.scores.FirstOrDefault(x => x.question == currentQuestion) == null)
-            {
-                addScore(1, 0, false);
-            }
-            if (session.team2.scores.FirstOrDefault(x => x.question == currentQuestion) == null)
-            {
-                addScore(2, 0, false);
-            }
+            numScore1.Value += numScoreLastQuestion1.Value;
+            numScore2.Value += numScoreLastQuestion2.Value;
+            addScore(1, (int)numScoreLastQuestion1.Value, chkFastest1.Checked);
+            addScore(2, (int)numScoreLastQuestion2.Value, chkFastest2.Checked);
         }
 
         void resetAnswerFields()
@@ -298,13 +294,14 @@ namespace GameNightSerialCommunications
             txtTimeSinceSet2.Text = "";
             txtTimeSinceSet1ms.Text = "";
             txtTimeSinceSet2ms.Text = "";
-            scoreSetTeam1LastQuestion = 0;
-            scoreSetTeam2LastQuestion = 0;
+            numScoreLastQuestion1.Value = 0;
+            numScoreLastQuestion2.Value = 0;
             sc.SendToAll("L:0");
             chkFastest1.Checked = false;
             chkFastest2.Checked = false;
             currentQuestion += 1;
             lblQuestion.Text = currentQuestion.ToString();
+            sc.SendToAll("S:300");
         }
 
         private void btnSaveSession_Click(object sender, EventArgs e)
@@ -342,7 +339,7 @@ namespace GameNightSerialCommunications
         private void reloadSession(Session prevSession)
         {
             session = SessionHandler.ReloadSession(session, prevSession);
-            currentQuestion = SessionHandler.GetLatestQuestion(session);
+            currentQuestion = SessionHandler.GetLatestQuestion(session) + 1;
             lblQuestion.Text = currentQuestion.ToString();
             numScore1.Value = SessionHandler.GetScoreForTeam(1, session);
             numScore2.Value = SessionHandler.GetScoreForTeam(2, session);
@@ -357,19 +354,15 @@ namespace GameNightSerialCommunications
             int score = Convert.ToInt32(button.Text.Replace("+", ""));
             int team = Convert.ToInt32(button.Parent.Name.Replace("pnlTeam", ""));
             bool valueToReportForFastestThisQuestion = false;
-            if (reportFastest)
-            {
-                if (team == 1)
-                {
-                    valueToReportForFastestThisQuestion = chkFastest1.Checked;
-                }
-                else
-                {
-                    valueToReportForFastestThisQuestion = chkFastest2.Checked;
-                }
-            }
 
-            addScore(team, score, valueToReportForFastestThisQuestion);
+            if (team == 1)
+            {
+                numScoreLastQuestion1.Value += score;
+            }
+            else
+            {
+                numScoreLastQuestion2.Value += score;
+            }
         }
 
         private void saveTeamName(int team, string text)
@@ -404,38 +397,12 @@ namespace GameNightSerialCommunications
             };
             if (team == 1)
             {
-                if (scoreSetTeam1LastQuestion > 0)
-                {
-                    if (MessageBox.Show("Al punten gegeven voor deze vraag, punten aanpassen?", "Alweer?", MessageBoxButtons.YesNo) == DialogResult.No)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        numScore1.Value -= scoreSetTeam1LastQuestion;
-                    }
-                }
-                scoreSetTeam1LastQuestion = points;
-                numScore1.Value += points;
                 score.miliseconds = String.IsNullOrEmpty(txtTimeSinceSet1ms.Text) ? 0 : Convert.ToInt32(txtTimeSinceSet1ms.Text);
                 SessionHandler.AddScore(session, score, 1);
             }
 
             if (team == 2)
             {
-                if (scoreSetTeam2LastQuestion > 0)
-                {
-                    if (MessageBox.Show("Al punten gegeven voor deze vraag, punten aanpassen?", "Alweer?", MessageBoxButtons.YesNo) == DialogResult.No)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        numScore2.Value -= scoreSetTeam2LastQuestion;
-                    }
-                }
-                scoreSetTeam2LastQuestion = points;
-                numScore2.Value += points;
                 score.miliseconds = String.IsNullOrEmpty(txtTimeSinceSet2ms.Text) ? 0 : Convert.ToInt32(txtTimeSinceSet2ms.Text);
                 SessionHandler.AddScore(session, score, 2);
             }
@@ -467,6 +434,26 @@ namespace GameNightSerialCommunications
             SetLoading(true);
             SqlHandler.writeSessionToDb(session);
             SetLoading(false);
+        }
+
+        private void btnResetScoreForThisQuestion1_Click(object sender, EventArgs e)
+        {
+            numScoreLastQuestion1.Value = 0;
+        }
+
+        private void btnResetScoreForThisQuestion2_Click(object sender, EventArgs e)
+        {
+            numScoreLastQuestion2.Value = 0;
+        }
+
+        private void btnSub11_Click(object sender, EventArgs e)
+        {
+            numScoreLastQuestion1.Value -= 1;
+        }
+
+        private void btnSub21_Click(object sender, EventArgs e)
+        {
+            numScoreLastQuestion2.Value -= 1;
         }
     }
 }

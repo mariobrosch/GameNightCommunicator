@@ -92,11 +92,21 @@
             this.chkFastest = new System.Windows.Forms.CheckBox();
             this.btnToSqlServer = new System.Windows.Forms.Button();
             this.pbLoader = new System.Windows.Forms.PictureBox();
+            this.btnResetScoreForThisQuestion1 = new System.Windows.Forms.Button();
+            this.btnResetScoreForThisQuestion2 = new System.Windows.Forms.Button();
+            this.btnSub11 = new System.Windows.Forms.Button();
+            this.btnSub21 = new System.Windows.Forms.Button();
+            this.lblScoreLastQuestion1 = new System.Windows.Forms.Label();
+            this.numScoreLastQuestion1 = new System.Windows.Forms.NumericUpDown();
+            this.lblScoreLastQuestion2 = new System.Windows.Forms.Label();
+            this.numScoreLastQuestion2 = new System.Windows.Forms.NumericUpDown();
             this.pnlTeam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
             this.pnlTeam2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoader)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScoreLastQuestion1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScoreLastQuestion2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSendAll
@@ -199,6 +209,10 @@
             // pnlTeam1
             // 
             this.pnlTeam1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam1.Controls.Add(this.lblScoreLastQuestion1);
+            this.pnlTeam1.Controls.Add(this.numScoreLastQuestion1);
+            this.pnlTeam1.Controls.Add(this.btnSub11);
+            this.pnlTeam1.Controls.Add(this.btnResetScoreForThisQuestion1);
             this.pnlTeam1.Controls.Add(this.txtTimeSinceSet1ms);
             this.pnlTeam1.Controls.Add(this.txtTeamName1);
             this.pnlTeam1.Controls.Add(this.lblTeamName1);
@@ -309,6 +323,16 @@
             // numScore1
             // 
             this.numScore1.Location = new System.Drawing.Point(16, 119);
+            this.numScore1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numScore1.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.numScore1.Name = "numScore1";
             this.numScore1.ReadOnly = true;
             this.numScore1.Size = new System.Drawing.Size(120, 20);
@@ -352,6 +376,10 @@
             // pnlTeam2
             // 
             this.pnlTeam2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlTeam2.Controls.Add(this.lblScoreLastQuestion2);
+            this.pnlTeam2.Controls.Add(this.numScoreLastQuestion2);
+            this.pnlTeam2.Controls.Add(this.btnSub21);
+            this.pnlTeam2.Controls.Add(this.btnResetScoreForThisQuestion2);
             this.pnlTeam2.Controls.Add(this.txtTimeSinceSet2ms);
             this.pnlTeam2.Controls.Add(this.txtTeamName2);
             this.pnlTeam2.Controls.Add(this.lblTeamName2);
@@ -471,6 +499,16 @@
             // numScore2
             // 
             this.numScore2.Location = new System.Drawing.Point(16, 119);
+            this.numScore2.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numScore2.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.numScore2.Name = "numScore2";
             this.numScore2.ReadOnly = true;
             this.numScore2.Size = new System.Drawing.Size(120, 20);
@@ -695,6 +733,100 @@
             this.pbLoader.TabStop = false;
             this.pbLoader.Visible = false;
             // 
+            // btnResetScoreForThisQuestion1
+            // 
+            this.btnResetScoreForThisQuestion1.Location = new System.Drawing.Point(16, 174);
+            this.btnResetScoreForThisQuestion1.Name = "btnResetScoreForThisQuestion1";
+            this.btnResetScoreForThisQuestion1.Size = new System.Drawing.Size(246, 23);
+            this.btnResetScoreForThisQuestion1.TabIndex = 27;
+            this.btnResetScoreForThisQuestion1.Text = "Ongedaan maken score van deze vraag";
+            this.btnResetScoreForThisQuestion1.UseVisualStyleBackColor = true;
+            this.btnResetScoreForThisQuestion1.Click += new System.EventHandler(this.btnResetScoreForThisQuestion1_Click);
+            // 
+            // btnResetScoreForThisQuestion2
+            // 
+            this.btnResetScoreForThisQuestion2.Location = new System.Drawing.Point(16, 174);
+            this.btnResetScoreForThisQuestion2.Name = "btnResetScoreForThisQuestion2";
+            this.btnResetScoreForThisQuestion2.Size = new System.Drawing.Size(246, 23);
+            this.btnResetScoreForThisQuestion2.TabIndex = 28;
+            this.btnResetScoreForThisQuestion2.Text = "Ongedaan maken score van deze vraag";
+            this.btnResetScoreForThisQuestion2.UseVisualStyleBackColor = true;
+            this.btnResetScoreForThisQuestion2.Click += new System.EventHandler(this.btnResetScoreForThisQuestion2_Click);
+            // 
+            // btnSub11
+            // 
+            this.btnSub11.Location = new System.Drawing.Point(269, 173);
+            this.btnSub11.Name = "btnSub11";
+            this.btnSub11.Size = new System.Drawing.Size(56, 23);
+            this.btnSub11.TabIndex = 28;
+            this.btnSub11.Text = "-1";
+            this.btnSub11.UseVisualStyleBackColor = true;
+            this.btnSub11.Click += new System.EventHandler(this.btnSub11_Click);
+            // 
+            // btnSub21
+            // 
+            this.btnSub21.Location = new System.Drawing.Point(268, 173);
+            this.btnSub21.Name = "btnSub21";
+            this.btnSub21.Size = new System.Drawing.Size(56, 23);
+            this.btnSub21.TabIndex = 29;
+            this.btnSub21.Text = "-1";
+            this.btnSub21.UseVisualStyleBackColor = true;
+            this.btnSub21.Click += new System.EventHandler(this.btnSub21_Click);
+            // 
+            // lblScoreLastQuestion1
+            // 
+            this.lblScoreLastQuestion1.AutoSize = true;
+            this.lblScoreLastQuestion1.Location = new System.Drawing.Point(202, 103);
+            this.lblScoreLastQuestion1.Name = "lblScoreLastQuestion1";
+            this.lblScoreLastQuestion1.Size = new System.Drawing.Size(99, 13);
+            this.lblScoreLastQuestion1.TabIndex = 30;
+            this.lblScoreLastQuestion1.Text = "Score laatste vraag";
+            // 
+            // numScoreLastQuestion1
+            // 
+            this.numScoreLastQuestion1.Location = new System.Drawing.Point(205, 119);
+            this.numScoreLastQuestion1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numScoreLastQuestion1.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numScoreLastQuestion1.Name = "numScoreLastQuestion1";
+            this.numScoreLastQuestion1.ReadOnly = true;
+            this.numScoreLastQuestion1.Size = new System.Drawing.Size(120, 20);
+            this.numScoreLastQuestion1.TabIndex = 29;
+            // 
+            // lblScoreLastQuestion2
+            // 
+            this.lblScoreLastQuestion2.AutoSize = true;
+            this.lblScoreLastQuestion2.Location = new System.Drawing.Point(202, 103);
+            this.lblScoreLastQuestion2.Name = "lblScoreLastQuestion2";
+            this.lblScoreLastQuestion2.Size = new System.Drawing.Size(99, 13);
+            this.lblScoreLastQuestion2.TabIndex = 32;
+            this.lblScoreLastQuestion2.Text = "Score laatste vraag";
+            // 
+            // numScoreLastQuestion2
+            // 
+            this.numScoreLastQuestion2.Location = new System.Drawing.Point(205, 119);
+            this.numScoreLastQuestion2.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.numScoreLastQuestion2.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numScoreLastQuestion2.Name = "numScoreLastQuestion2";
+            this.numScoreLastQuestion2.ReadOnly = true;
+            this.numScoreLastQuestion2.Size = new System.Drawing.Size(120, 20);
+            this.numScoreLastQuestion2.TabIndex = 31;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
@@ -734,6 +866,8 @@
             this.pnlTeam2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoader)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScoreLastQuestion1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numScoreLastQuestion2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -804,6 +938,14 @@
         private System.Windows.Forms.CheckBox chkFastest;
         private System.Windows.Forms.Button btnToSqlServer;
         private System.Windows.Forms.PictureBox pbLoader;
+        private System.Windows.Forms.Button btnResetScoreForThisQuestion1;
+        private System.Windows.Forms.Button btnResetScoreForThisQuestion2;
+        private System.Windows.Forms.Button btnSub11;
+        private System.Windows.Forms.Button btnSub21;
+        private System.Windows.Forms.Label lblScoreLastQuestion1;
+        private System.Windows.Forms.NumericUpDown numScoreLastQuestion1;
+        private System.Windows.Forms.Label lblScoreLastQuestion2;
+        private System.Windows.Forms.NumericUpDown numScoreLastQuestion2;
     }
 }
 

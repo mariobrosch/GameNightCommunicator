@@ -28,5 +28,4 @@ The application has some functionality to communicate through the COM port. The 
   
 ## TODO
 * Texts into resource file to support multiple languages and set language per team
-* Add image to the team based on the name
-* Clicking multiple times on ADD button will accumulate score for the question, reset button must be added
+* Add keyboard support and fix tab index
