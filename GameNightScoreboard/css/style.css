@@ -1,0 +1,159 @@
+body,
+.scoreboard {
+    background: #C0BFBF;
+    padding: 30px 0
+}
+
+.scoringTable {
+    text-align: center
+}
+
+    .scoringTable .scoringTable-header {
+        padding: 30px 0;
+        background: #4d4d4d;
+        position: relative;
+        transition: all .3s ease 0s
+    }
+
+    .scoringTable:hover .scoringTable-header {
+        background: #09b2c6
+    }
+
+    .scoringTable .scoringTable-header:after, .scoringTable .scoringTable-header:before {
+        content: "";
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid #d9d9d8;
+        position: absolute;
+        bottom: 12px
+    }
+
+    .scoringTable .scoringTable-header:before {
+        left: 40px
+    }
+
+    .scoringTable .scoringTable-header:after {
+        right: 40px
+    }
+
+    .scoringTable .heading {
+        font-size: 20px;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 0
+    }
+
+    .scoringTable .score-value {
+        display: inline-block;
+        position: relative;
+        font-size: 120px;
+        font-weight: 700;
+        color: #09b1c5;
+        transition: all .3s ease 0s
+    }
+
+    .scoringTable:hover .score-value {
+        color: #fff
+    }
+
+    .scoringTable .ranking {
+        font-size: 30px;
+        font-weight: 700;
+        position: absolute;
+        top: 6px;
+        left: -70px
+    }
+
+    .scoringTable .scoring-content {
+        padding-top: 50px;
+        background: #fff;
+        position: relative
+    }
+
+        .scoringTable .scoring-content:after, .scoringTable .scoring-content:before {
+            content: "";
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1px solid #7c7c7c;
+            position: absolute;
+            top: 12px
+        }
+
+        .scoringTable .scoring-content:before {
+            left: 40px
+        }
+
+        .scoringTable .scoring-content:after {
+            right: 40px
+        }
+
+        .scoringTable .scoring-content ul {
+            padding: 0 20px;
+            margin: 0;
+            list-style: none
+        }
+
+            .scoringTable .scoring-content ul:after, .scoringTable .scoring-content ul:before {
+                content: "";
+                width: 8px;
+                height: 46px;
+                border-radius: 3px;
+                background: linear-gradient(to bottom,#818282 50%,#727373 50%);
+                position: absolute;
+                top: -22px;
+                z-index: 1;
+                box-shadow: 0 0 5px #707070;
+                transition: all .3s ease 0s
+            }
+
+    .scoringTable:hover .scoring-content ul:after, .scoringTable:hover .scoring-content ul:before {
+        background: linear-gradient(to bottom,#40c4db 50%,#34bacc 50%)
+    }
+
+    .scoringTable .scoring-content ul:before {
+        left: 44px
+    }
+
+    .scoringTable .scoring-content ul:after {
+        right: 44px
+    }
+
+    .scoringTable .scoring-content ul li {
+        font-size: 15px;
+        font-weight: 700;
+        color: #777473;
+        padding: 10px 0;
+        border-bottom: 1px solid #d9d9d8
+    }
+
+        .scoringTable .scoring-content ul li:last-child {
+            border-bottom: none
+        }
+
+    .scoringTable .read {
+        display: inline-block;
+        font-size: 16px;
+        color: #fff;
+        text-transform: uppercase;
+        background: #d9d9d8;
+        padding: 8px 25px;
+        margin: 30px 0;
+        transition: all .3s ease 0s
+    }
+
+        .scoringTable .read:hover {
+            text-decoration: none
+        }
+
+    .scoringTable:hover .read {
+        background: #09b1c5
+    }
+
+@media screen and (max-width:990px) {
+    .scoringTable {
+        margin-bottom: 25px
+    }
+}

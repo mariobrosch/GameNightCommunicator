@@ -30,7 +30,13 @@ include ("db.php");
 include ("function.php");
 
 print '<div>';
-	include ("standings.php");
+    print '<div class="scoreboard">';
+        print '<div class="container">';
+            print '<div class="row">';
+	            include ("standings.php");
+            print '</div>';
+        print '</div>';
+    print '</div>';
 print '</div>';
 ?>
 

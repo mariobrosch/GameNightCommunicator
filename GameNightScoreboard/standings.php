@@ -63,11 +63,31 @@
 		
 	$sql = mysqli_query ($dbhandle, "SELECT name, miliseconds, points, questions, fastest FROM tbl_tmp".$random." ORDER BY points DESC, miliseconds DESC, name ASC");
 	$counter = 0;
-	print "<table>";
 	while ($row = mysqli_fetch_row($sql)) {
 		$counter += 1;
-		print "<tr><td>".$counter."</td><td>".$row[0]."</td><td>".$row[1]."</td><td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td></tr>";
+		print '<div class="col-md-6 col-sm-6">';
+			print '<div class="scoringTable">';
+				print '<div class="scoringTable-header">';
+					print '<h3 class="heading">'.$row[0].'</h3>';
+					print '<span class="score-value">';
+						print '<span class="ranking">Rank</span> '.$counter;
+                    print '</span>';
+				print '</div>';
+                print '<div class="scoring-content">';
+					print '<ul>';
+						print '<li>Punten: '.$row[2].'</li>';
+						print '<li>Tijd: '.$row[1].'</li>';
+						print '<li>Aantal vragen: '.$row[3].'</li>';
+						print '<li>Aantal keer snelste: '.$row[4].'</li>';
+                    print '</ul>';
+                print '</div>';
+            print '</div>';
+        print '</div>';
 	}		
 	print "</table>";
 	mysqli_query($dbhandle, "DROP TABLE tbl_tmp".$random." ");
 ?>
+
+
+                   
+    
