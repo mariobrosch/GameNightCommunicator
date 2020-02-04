@@ -1,5 +1,6 @@
 ﻿using GameNightSerialCommunications.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -39,11 +40,12 @@ namespace GameNightSerialCommunications
         {
             if (team == 1)
             {
-                var resultLocation =session.team1.scores.FindIndex(s => s.question == score.question);
+                var resultLocation = session.team1.scores.FindIndex(s => s.question == score.question);
                 if (resultLocation != -1)
                 {
                     session.team1.scores[resultLocation] = score;
-                } else
+                }
+                else
                 {
                     session.team1.scores.Add(score);
                 }
@@ -74,8 +76,8 @@ namespace GameNightSerialCommunications
             var scores2 = session.team2.scores;
 
             var question1 = scores1.Count > 0 ? scores1.Max(t => t.question) : 0;
-            var question2 = scores2.Count > 0 ?scores2.Max(t => t.question) : 0;
-                       
+            var question2 = scores2.Count > 0 ? scores2.Max(t => t.question) : 0;
+
             return question1 > question2 ? question1 : question2;
         }
 
@@ -91,14 +93,14 @@ namespace GameNightSerialCommunications
             {
                 var scores = session.team1.scores;
                 int returnValue = 0;
-                foreach(Score score in scores)
+                foreach (Score score in scores)
                 {
                     returnValue += score.points;
                 }
 
                 return returnValue;
             }
-            if ( team == 2)
+            if (team == 2)
             {
                 var scores = session.team2.scores;
                 int returnValue = 0;
@@ -110,6 +112,49 @@ namespace GameNightSerialCommunications
                 return returnValue;
             }
             return 0;
+        }
+
+        internal static Session ReloadSession(Session session, Session prevSession)
+        {
+            session = new Session
+            {
+                team1 = new Team
+                {
+                    comPortUsed = prevSession.team1.comPortUsed,
+                    teamName = prevSession.team1.teamName,
+                    scores = new List<Score>()
+                },
+                team2 = new Team
+                {
+                    comPortUsed = prevSession.team2.comPortUsed,
+                    teamName = prevSession.team2.teamName,
+                    scores = new List<Score>()
+                }
+            };
+
+            prevSession.team1.scores.ForEach(score =>
+            {
+                session.team1.scores.Add(
+                    new Score
+                    {
+                        fastest = score.fastest,
+                        points = score.points,
+                        question = score.question,
+                        miliseconds = score.miliseconds
+                    });
+            });          
+            prevSession.team2.scores.ForEach(score =>
+            {
+                session.team2.scores.Add(
+                    new Score
+                    {
+                        fastest = score.fastest,
+                        points = score.points,
+                        question = score.question,
+                        miliseconds = score.miliseconds
+                    });
+            });
+            return session;
         }
     }
 }

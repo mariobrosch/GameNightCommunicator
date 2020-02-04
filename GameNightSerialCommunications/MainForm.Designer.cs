@@ -90,6 +90,7 @@
             this.lblQuestionLabel = new System.Windows.Forms.Label();
             this.lblQuestion = new System.Windows.Forms.Label();
             this.chkFastest = new System.Windows.Forms.CheckBox();
+            this.btnToSqlServer = new System.Windows.Forms.Button();
             this.pnlTeam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
             this.pnlTeam2.SuspendLayout();
@@ -670,12 +671,23 @@
             this.chkFastest.Text = "Report fastest";
             this.chkFastest.UseVisualStyleBackColor = true;
             // 
+            // btnToSqlServer
+            // 
+            this.btnToSqlServer.Location = new System.Drawing.Point(376, 141);
+            this.btnToSqlServer.Name = "btnToSqlServer";
+            this.btnToSqlServer.Size = new System.Drawing.Size(111, 23);
+            this.btnToSqlServer.TabIndex = 29;
+            this.btnToSqlServer.Text = "Write to online db";
+            this.btnToSqlServer.UseVisualStyleBackColor = true;
+            this.btnToSqlServer.Click += new System.EventHandler(this.btnToSqlServer_Click);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(737, 476);
+            this.Controls.Add(this.btnToSqlServer);
             this.Controls.Add(this.chkFastest);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.lblQuestionLabel);
@@ -774,6 +786,7 @@
         private System.Windows.Forms.Label lblQuestionLabel;
         private System.Windows.Forms.Label lblQuestion;
         private System.Windows.Forms.CheckBox chkFastest;
+        private System.Windows.Forms.Button btnToSqlServer;
     }
 }
 

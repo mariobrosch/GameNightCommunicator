@@ -23,6 +23,13 @@ namespace GameNightSerialCommunications
         public MainForm()
         {
             InitializeComponent();
+            var ports = SerialPort.GetPortNames();
+            cboTeam1.DataSource = ports;
+            var ports2 = SerialPort.GetPortNames();
+            cboTeam2.DataSource = ports2;
+            setDate = DateTime.Now;
+            lblQuestion.Text = currentQuestion.ToString();
+
 
             if (File.Exists(sessionFileLocation))
             {
@@ -38,29 +45,29 @@ namespace GameNightSerialCommunications
                         }
                     }
                 }
-                catch
+                catch (Exception e)
                 {
+                    MessageBox.Show(e.Message);
                     // Error, so previous session was faulty, no worries :)
                 }
+            } 
+            if (session == null)
+            {
+                session = new Session
+                {
+                    team1 = new Team()
+                    {
+                        scores = new List<Score>()
+                    },
+                    team2 = new Team()
+                    {
+                        scores = new List<Score>()
+                    }
+                };
             }
 
-            session = new Session
-            {
-                team1 = new Team()
-                {
-                    scores = new List<Score>()
-                },
-                team2 = new Team()
-                {
-                    scores = new List<Score>()
-                }
-            };
-            var ports = SerialPort.GetPortNames();
-            cboTeam1.DataSource = ports;
-            var ports2 = SerialPort.GetPortNames();
-            cboTeam2.DataSource = ports2;
-            setDate = DateTime.Now;
-            lblQuestion.Text = currentQuestion.ToString();
+            
+
         }
 
         private void btnSendAll_Click(object sender, EventArgs e)
@@ -313,8 +320,7 @@ namespace GameNightSerialCommunications
 
         private void reloadSession(Session prevSession)
         {
-            session = prevSession;
-
+            session = SessionHandler.ReloadSession(session, prevSession);
             currentQuestion = SessionHandler.GetLatestQuestion(session);
             lblQuestion.Text = currentQuestion.ToString();
             numScore1.Value = SessionHandler.GetScoreForTeam(1, session);
@@ -416,6 +422,14 @@ namespace GameNightSerialCommunications
         {
             var xmlData = session.ToXml();
             File.WriteAllText(sessionFileLocation, xmlData);
+        }
+
+        private void btnToSqlServer_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Data wegschrijven naar online database? Alle data wordt overschreven. Doorgaan?", "Overschrijven data?",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                SqlHandler.writeSessionToDb(session);
+            }
         }
     }
 }

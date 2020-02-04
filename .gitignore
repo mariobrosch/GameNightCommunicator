@@ -339,3 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /GameNightScoreboard/config/config.php
+/GameNightSerialCommunications/config.cs

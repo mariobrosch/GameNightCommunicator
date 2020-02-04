@@ -1,5 +1,8 @@
-﻿namespace GameNightSerialCommunications.Models
+﻿using System;
+
+namespace GameNightSerialCommunications.Models
 {
+    [Serializable]
     public class Score
     {
         public int question;
