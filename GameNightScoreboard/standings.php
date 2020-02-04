@@ -54,7 +54,7 @@
 		
 	// create a temporary table
 	$random = rand(10000,99999);
-	mysqli_query($dbhandle, "CREATE TABLE tbl_tmp".$random." (name char(25),miliseconds decimal(10,2), points decimal(3,1), questions int, fastest int, PRIMARY KEY (name))");
+	mysqli_query($dbhandle, "CREATE TABLE tbl_tmp".$random." (name char(25),miliseconds decimal(10,0), points decimal(3,0), questions int, fastest int, PRIMARY KEY (name))");
 	for ($counter = 1; $counter <= $num_teams; $counter +=1) {
 		$teamid =	$team[$counter - 1];
 		$tmp_query= "INSERT INTO tbl_tmp".$random." (name, miliseconds, points, questions, fastest) VALUES ('".$team[$counter -1]."', '".$miliseconds[$counter -1]."', '".$points[$counter - 1]."', '".$question[$counter - 1]."', '".$fastest[$counter-1]."' )";
@@ -68,17 +68,19 @@
 		print '<div class="col-md-6 col-sm-6">';
 			print '<div class="scoringTable">';
 				print '<div class="scoringTable-header">';
-					print '<h3 class="heading">'.$row[0].'</h3>';
+					print '<h3 class="heading">Rang: '.$counter.'</h3>';
+					print '<img id="demo-image" src="https://api.adorable.io/avatars/200/'.$row[0].'" style="width: 200px; height: 200px; border-radius: 26%;" alt="demo-image">';
 					print '<span class="score-value">';
-						print '<span class="ranking">Rank</span> '.$counter;
+						print $row[0];
                     print '</span>';
 				print '</div>';
                 print '<div class="scoring-content">';
 					print '<ul>';
 						print '<li>Punten: '.$row[2].'</li>';
-						print '<li>Tijd: '.$row[1].'</li>';
 						print '<li>Aantal vragen: '.$row[3].'</li>';
-						print '<li>Aantal keer snelste: '.$row[4].'</li>';
+						print '<li><span class="lead">Tijdgebonden vragen</span></li>';
+						print '<li>Denktijd: '.($row[1] / 1000).' s.</li>';
+						print '<li>Snelste: '.$row[4].'</li>';
                     print '</ul>';
                 print '</div>';
             print '</div>';
