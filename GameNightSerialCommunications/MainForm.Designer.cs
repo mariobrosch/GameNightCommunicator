@@ -91,10 +91,12 @@
             this.lblQuestion = new System.Windows.Forms.Label();
             this.chkFastest = new System.Windows.Forms.CheckBox();
             this.btnToSqlServer = new System.Windows.Forms.Button();
+            this.pbLoader = new System.Windows.Forms.PictureBox();
             this.pnlTeam1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore1)).BeginInit();
             this.pnlTeam2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoader)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSendAll
@@ -681,6 +683,18 @@
             this.btnToSqlServer.UseVisualStyleBackColor = true;
             this.btnToSqlServer.Click += new System.EventHandler(this.btnToSqlServer_Click);
             // 
+            // pbLoader
+            // 
+            this.pbLoader.BackgroundImage = global::GameNightSerialCommunications.Properties.Resources.Spinner;
+            this.pbLoader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbLoader.InitialImage = null;
+            this.pbLoader.Location = new System.Drawing.Point(1, -1);
+            this.pbLoader.Name = "pbLoader";
+            this.pbLoader.Size = new System.Drawing.Size(737, 478);
+            this.pbLoader.TabIndex = 30;
+            this.pbLoader.TabStop = false;
+            this.pbLoader.Visible = false;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.btnSendAll;
@@ -709,6 +723,7 @@
             this.Controls.Add(this.txtCommand);
             this.Controls.Add(this.btnSendAll);
             this.Controls.Add(this.btnFault1);
+            this.Controls.Add(this.pbLoader);
             this.Name = "MainForm";
             this.Text = "Family Game Night Communicator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_Closing);
@@ -718,6 +733,7 @@
             this.pnlTeam2.ResumeLayout(false);
             this.pnlTeam2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numScore2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoader)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -787,6 +803,7 @@
         private System.Windows.Forms.Label lblQuestion;
         private System.Windows.Forms.CheckBox chkFastest;
         private System.Windows.Forms.Button btnToSqlServer;
+        private System.Windows.Forms.PictureBox pbLoader;
     }
 }
 

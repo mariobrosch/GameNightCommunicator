@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,7 +40,7 @@ namespace GameNightSerialCommunications
                     var prevSession = SessionHandler.FromXml<Session>(File.ReadAllText(sessionFileLocation));
                     if (prevSession.team1.scores.Count > 0 || prevSession.team2.scores.Count > 0)
                     {
-                        if (MessageBox.Show("Vorige sessie hervatten?","Hervatten?",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show("Vorige sessie hervatten?", "Hervatten?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             reloadSession(prevSession);
                         }
@@ -50,7 +51,7 @@ namespace GameNightSerialCommunications
                     MessageBox.Show(e.Message);
                     // Error, so previous session was faulty, no worries :)
                 }
-            } 
+            }
             if (session == null)
             {
                 session = new Session
@@ -65,9 +66,29 @@ namespace GameNightSerialCommunications
                     }
                 };
             }
+        }
 
-            
-
+        private void SetLoading(bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                Invoke((MethodInvoker)delegate
+                {
+                    pbLoader.BringToFront();
+                    pbLoader.Visible = true;
+                    
+                    Cursor = Cursors.WaitCursor;
+                });
+            }
+            else
+            {
+                Invoke((MethodInvoker)delegate
+                {
+                    pbLoader.Visible = false;
+                    Cursor = Cursors.Default;
+                    pbLoader.SendToBack();
+                });
+            }
         }
 
         private void btnSendAll_Click(object sender, EventArgs e)
@@ -85,13 +106,13 @@ namespace GameNightSerialCommunications
         {
             if (InvokeRequired)
             {
-                Invoke(new Action<object, SerialDataReceivedEventArgs>(serialPort1_DataReceived), new object[] { sender,e });
+                Invoke(new Action<object, SerialDataReceivedEventArgs>(serialPort1_DataReceived), new object[] { sender, e });
                 return;
             }
 
             if (!String.IsNullOrEmpty(txtTimeSinceSet1.Text))
             {
-                sc.sendMessageToTeam(serialTeam1, txtLastAnswerTeam1.Text.Split(':')[1].Substring(0,1));
+                sc.sendMessageToTeam(serialTeam1, txtLastAnswerTeam1.Text.Split(':')[1].Substring(0, 1));
                 return;
             }
             TimeSpan span = DateTime.Now - setDate;
@@ -123,8 +144,8 @@ namespace GameNightSerialCommunications
             TimeSpan span = DateTime.Now - setDate;
             int ms = (int)span.TotalMilliseconds;
             txtTimeSinceSet2ms.Text = ms.ToString();
-            double seconds = Convert.ToDouble(ms)/1000;
-            txtTimeSinceSet2.Text = seconds.ToString() + " s.";           
+            double seconds = Convert.ToDouble(ms) / 1000;
+            txtTimeSinceSet2.Text = seconds.ToString() + " s.";
             if (String.IsNullOrEmpty(txtTimeSinceSet1.Text))
             {
                 chkFastest2.Checked = true;
@@ -262,7 +283,7 @@ namespace GameNightSerialCommunications
             {
                 addScore(1, 0, false);
             }
-            if (session.team2.scores.FirstOrDefault(x=> x.question == currentQuestion) == null)
+            if (session.team2.scores.FirstOrDefault(x => x.question == currentQuestion) == null)
             {
                 addScore(2, 0, false);
             }
@@ -341,7 +362,8 @@ namespace GameNightSerialCommunications
                 if (team == 1)
                 {
                     valueToReportForFastestThisQuestion = chkFastest1.Checked;
-                } else
+                }
+                else
                 {
                     valueToReportForFastestThisQuestion = chkFastest2.Checked;
                 }
@@ -352,7 +374,7 @@ namespace GameNightSerialCommunications
 
         private void saveTeamName(int team, string text)
         {
-            if (team ==  1)
+            if (team == 1)
             {
                 session.team1.teamName = text;
             }
@@ -387,7 +409,8 @@ namespace GameNightSerialCommunications
                     if (MessageBox.Show("Al punten gegeven voor deze vraag, punten aanpassen?", "Alweer?", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
                         return;
-                    } else
+                    }
+                    else
                     {
                         numScore1.Value -= scoreSetTeam1LastQuestion;
                     }
@@ -402,7 +425,7 @@ namespace GameNightSerialCommunications
             {
                 if (scoreSetTeam2LastQuestion > 0)
                 {
-                    if( MessageBox.Show("Al punten gegeven voor deze vraag, punten aanpassen?", "Alweer?", MessageBoxButtons.YesNo) == DialogResult.No)
+                    if (MessageBox.Show("Al punten gegeven voor deze vraag, punten aanpassen?", "Alweer?", MessageBoxButtons.YesNo) == DialogResult.No)
                     {
                         return;
                     }
@@ -426,10 +449,24 @@ namespace GameNightSerialCommunications
 
         private void btnToSqlServer_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Data wegschrijven naar online database? Alle data wordt overschreven. Doorgaan?", "Overschrijven data?",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("Data wegschrijven naar online database? Alle data wordt overschreven. Doorgaan?", "Overschrijven data?", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                SqlHandler.writeSessionToDb(session);
+                try
+                {
+                    Thread threadInput = new Thread(DisplayData);
+                    threadInput.Start();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
+        }
+        private void DisplayData()
+        {
+            SetLoading(true);
+            SqlHandler.writeSessionToDb(session);
+            SetLoading(false);
         }
     }
 }
