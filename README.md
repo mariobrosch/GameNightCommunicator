@@ -27,8 +27,6 @@ The application has some functionality to communicate through the COM port. The 
   |chkFastest<1/2>| |If checked this team was the fastest responder|
   
 ## TODO
-* Total answer time calculation
-* Total of fastest answers
 * Texts into resource file to support multiple languages and set language per team
 * Add image to the team based on the name
 * Clicking multiple times on ADD button will accumulate score for the question, reset button must be added
