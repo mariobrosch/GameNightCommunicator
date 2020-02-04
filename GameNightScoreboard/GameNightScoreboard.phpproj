@@ -25,9 +25,15 @@
   <ItemGroup>
     <Content Include="css\style.css" />
     <Content Include="config\index.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\quiz-logo.ico" />
+    <Content Include="images\quiz-logo.jpg" />
+    <Content Include="images\quiz-logo.webp" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="config\" />
     <Folder Include="css\" />
+    <Folder Include="images\" />
   </ItemGroup>
 </Project>
