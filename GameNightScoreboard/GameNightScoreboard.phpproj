@@ -25,10 +25,8 @@
   <ItemGroup>
     <Content Include="css\style.css" />
     <Content Include="config\index.html" />
-    <Content Include="js\jquery-3.4.1.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="js\" />
     <Folder Include="config\" />
     <Folder Include="css\" />
   </ItemGroup>
