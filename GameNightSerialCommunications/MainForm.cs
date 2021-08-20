@@ -18,8 +18,6 @@ namespace GameNightSerialCommunications
         readonly string defaultSaveLocation = Path.Combine(Directory.GetCurrentDirectory(), "savedSessions");
         internal Session session;
         int currentQuestion = 1;
-        int scoreSetTeam1LastQuestion = 0;
-        int scoreSetTeam2LastQuestion = 0;
 
         public MainForm()
         {
@@ -349,11 +347,9 @@ namespace GameNightSerialCommunications
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            bool reportFastest = chkFastest.Checked;
             var button = (sender as Button);
             int score = Convert.ToInt32(button.Text.Replace("+", ""));
             int team = Convert.ToInt32(button.Parent.Name.Replace("pnlTeam", ""));
-            bool valueToReportForFastestThisQuestion = false;
 
             if (team == 1)
             {
@@ -423,7 +419,9 @@ namespace GameNightSerialCommunications
                     Thread threadInput = new Thread(DisplayData);
                     threadInput.Start();
                 }
+                #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
+                #pragma warning restore CA1031 // Do not catch general exception types
                 {
                     MessageBox.Show(ex.Message);
                 }
